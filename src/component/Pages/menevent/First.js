@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "@fortawesome/fontawesome-free/css/all.min.css";
 import eventImg1 from "../../../assets/img/bg/evn-img-1.webp";
 import eventImg2 from "../../../assets/img/bg/evn-img-02.webp";
 import eventImg3 from "../../../assets/img/bg/evn-img-3.webp";

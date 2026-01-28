@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "@fortawesome/fontawesome-free/css/all.min.css";
 import class1 from "../../assets/img/class/class-1.jpg";
 import class2 from "../../assets/img/class/class-2.jpg";
 import class3 from "../../assets/img/class/class-3.jpg";

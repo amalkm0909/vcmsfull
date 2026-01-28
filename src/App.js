@@ -5,7 +5,6 @@ import LiveChat from "./component/LiveChat/Main";
 import "./assets/css/bootstrap.min.css";
 import "./assets/css/animate.min.css";
 import "./assets/css/magnific-popup.css";
-import "./assets/fontawesome/css/all.min.css";
 import "./assets/css/dripicons.css";
 import "./assets/css/slick.css";
 import "./assets/css/meanmenu.css";

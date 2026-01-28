@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "@fortawesome/fontawesome-free/css/all.min.css";
 import Slider from "react-slick";
 import Background from "../../assets/img/slider/slider_bg.webp";
 import Backgroundsix from "../../assets/img/slider/slider_bg_02.webp";
@@ -17,7 +18,7 @@ function SampleNextArrow(props) {
       className={`slick-next ${className}`}
       onClick={onClick}
     >
-      <i className="far fa-angle-right"></i>
+      <i className="fas fa-angle-right"></i>
     </button>
   );
 }
@@ -30,7 +31,7 @@ function SamplePrevArrow(props) {
       className={`slick-prev ${className}`}
       onClick={onClick}
     >
-      <i className="far fa-angle-left"></i>
+      <i className="fas fa-angle-left"></i>
     </button>
   );
 }

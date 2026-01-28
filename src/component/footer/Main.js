@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "@fortawesome/fontawesome-free/css/all.min.css";
 
 function Main() {
   return (
@@ -292,9 +293,13 @@ function Main() {
                             color: "#888",
                             fontSize: "12px",
                             marginTop: "8px",
+                            whiteSpace: "nowrap",
+                            display: "flex",
+                            alignItems: "center",
+                            gap: "6px",
                           }}
                         >
-                          <i className="fal fa-calendar-alt" /> 10th Jan 2026
+                          <i className="fas fa-calendar-alt" /> 10th Jan 2026
                         </div>
                       </li>
                       <li style={{ marginBottom: "15px" }}>
@@ -321,9 +326,13 @@ function Main() {
                             color: "#888",
                             fontSize: "12px",
                             marginTop: "8px",
+                            whiteSpace: "nowrap",
+                            display: "flex",
+                            alignItems: "center",
+                            gap: "6px",
                           }}
                         >
-                          <i className="fal fa-calendar-alt" /> 5th Jan 2026
+                          <i className="fas fa-calendar-alt" /> 5th Jan 2026
                         </div>
                       </li>
                     </ul>
@@ -355,7 +364,7 @@ function Main() {
                         }}
                       >
                         <i
-                          className="fal fa-phone"
+                          className="fas fa-phone"
                           style={{
                             color: "#4899d2",
                             fontSize: "16px",
@@ -390,7 +399,7 @@ function Main() {
                         }}
                       >
                         <i
-                          className="fal fa-envelope"
+                          className="fas fa-envelope"
                           style={{
                             color: "#4899d2",
                             fontSize: "16px",
@@ -424,7 +433,7 @@ function Main() {
                         }}
                       >
                         <i
-                          className="fal fa-map-marker-alt"
+                          className="fas fa-map-marker-alt"
                           style={{
                             color: "#4899d2",
                             fontSize: "16px",

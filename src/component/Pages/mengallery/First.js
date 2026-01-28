@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "@fortawesome/fontawesome-free/css/all.min.css";
 import img01 from "../../../assets/img/gallery/protfolio-img01.webp";
 import img02 from "../../../assets/img/gallery/protfolio-img02.webp";
 import img03 from "../../../assets/img/gallery/protfolio-img03.webp";
