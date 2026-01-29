@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "@fortawesome/fontawesome-free/css/all.min.css";
+import GoToTop from "../../GoToTop/GoToTop";
 
 function First() {
   const teamMembers = [

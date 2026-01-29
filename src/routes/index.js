@@ -20,6 +20,8 @@ import Contact from "../component/contact/Main";
 import Projectdeatils from "../component/Pages/Projectdeatils/Main";
 import CampusLife from "../component/Pages/CampusLife/Main";
 import ViewAllNews from "../component/Pages/ViewAllNews/Main";
+import Privacy from "../component/Pages/Privacy/Main";
+import TermsCondition from "../component/Pages/TermsCondition/Main";
 import Home from "../component/home/Main";
 
 function Index() {
@@ -63,6 +65,8 @@ function Index() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/view-all-news" element={<ViewAllNews />} />
         <Route path="/campus-life" element={<CampusLife />} />
+        <Route path="/privacy" element={<Privacy />} />
+        <Route path="/terms-conditions" element={<TermsCondition />} />
       </Routes>
     </Layout>
   );

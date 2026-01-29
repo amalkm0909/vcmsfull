@@ -1,6 +1,7 @@
 import React from "react";
 import Bredcom from "../Bredcom/Main";
 import First from "../menblogdeatils/First";
+import GoToTop from "../GoToTop/GoToTop";
 import blogbg from "../../assets/img/bg/banner_all.webp"; // Updated: Added banner image
 
 function Main() {
@@ -14,6 +15,7 @@ function Main() {
       />{" "}
       {/* Updated: Added banner image and description */}
       <First />
+      <GoToTop />
     </>
   );
 }

@@ -2994,141 +2994,6 @@ right: 30px;
 color: #4899d2;
 border: 2px solid #4899d2;
 }
-.animations-01 {
-    position: absolute;
-    left: 0;
-    bottom: 30px;
-     animation: alltuchtopdown 3s infinite;
-      -webkit-animation: alltuchtopdown 3s infinite;
-      animation-delay: 0s;
-      -webkit-animation-delay: 1s;
-}
-.animations-02 {
-    position: absolute;
-    right: 0;
-    bottom:-10px;
-     animation: alltuchtopdown 5s infinite;
-      -webkit-animation: alltuchtopdown 5s infinite;
-      animation-delay: 0s;
-      -webkit-animation-delay: 3s;
-}
-.animations-03 {
-    position: absolute;
-    left: -50px;
-    top: 240px;
-     animation: alltuchtopdown 3s infinite;
-      -webkit-animation: alltuchtopdown 3s infinite;
-      animation-delay: 0s;
-      -webkit-animation-delay: 1s;
-}
-.animations-04 {
-   position: absolute;
-    left: 235px;
-    bottom: 195px;
-     animation: alltuchtopdown 3s infinite;
-      -webkit-animation: alltuchtopdown 3s infinite;
-      animation-delay: 0s;
-      -webkit-animation-delay: 1s;
-}
-.animations-05 {
-   position: absolute;
-    animation: alltuchtopdown 5s infinite;
-    width: 100%;
-    text-align: center;
-    top: 24px;
-    z-index: -1;
-}
-
-.animations-06 {
-    position: absolute;
-    left: 50px;
-    top: 240px;
-     animation: alltuchtopdown 3s infinite;
-      -webkit-animation: alltuchtopdown 3s infinite;
-      animation-delay: 0s;
-      -webkit-animation-delay: 1s;
-}
-.animations-07 {
-   position: absolute;
-    left: 0px;
-    bottom: -50px;
-     animation: alltuchtopdown 3s infinite;
-      -webkit-animation: alltuchtopdown 3s infinite;
-      animation-delay: 0s;
-      -webkit-animation-delay: 1s;
-}
-.animations-08 {
-    position: absolute;
-    right: 50px;
-    top:250px;
-     animation: alltuchtopdown 5s infinite;
-      -webkit-animation: alltuchtopdown 5s infinite;
-      animation-delay: 0s;
-      -webkit-animation-delay: 3s;
-}
-.animations-09 {
-  position: absolute;
-    right: 50px;
-    bottom:150px;
-     animation: alltuchtopdown 5s infinite;
-      -webkit-animation: alltuchtopdown 5s infinite;
-      animation-delay: 0s;
-      -webkit-animation-delay: 3s;
-}
-.animations-10 {
-position: absolute;
-left: 0;
-bottom: 110px;
-     animation: alltuchtopdown 3s infinite;
-      -webkit-animation: alltuchtopdown 3s infinite;
-      animation-delay: 0s;
-      -webkit-animation-delay: 1s;
-}
-.animations-11 {
-   position: absolute;
-    left: 160px;
-    bottom: 165px;
-     animation: alltuchtopdown 3s infinite;
-      -webkit-animation: alltuchtopdown 3s infinite;
-      animation-delay: 0s;
-      -webkit-animation-delay: 1s;
-}
-.animations-12 {
-    position: absolute;
-    right: 130px;
-    top: 340px;
-     animation: alltuchtopdown 3s infinite;
-      -webkit-animation: alltuchtopdown 3s infinite;
-      animation-delay: 0s;
-      -webkit-animation-delay: 1s;
-}
-.animations-13 {
-   position: absolute;
-    right: 150px;
-    bottom: 200px;
-     animation: alltuchtopdown 3s infinite;
-      -webkit-animation: alltuchtopdown 3s infinite;
-      animation-delay: 0s;
-      -webkit-animation-delay: 1s;
-}
-.animations-14 {
-    position: absolute;
-    right: 80px;
-   top: 150px;
-     animation: alltuchtopdown 5s infinite;
-      -webkit-animation: alltuchtopdown 5s infinite;
-      animation-delay: 0s;
-      -webkit-animation-delay: 3s;
-}
-.animations-15 {
-  position: absolute;
-    right: 120px;
-    bottom:0;
-     animation: alltuchtopdown 5s infinite;
-      -webkit-animation: alltuchtopdown 5s infinite;
-      animation-delay: 0s;
-      -webkit-animation-delay: 3s;
-}
 @keyframes alltuchtopdown {
   0% {
     -webkit-transform: rotateX(0deg) translateY(0px);
@@ -5123,91 +4988,101 @@ animation-delay: 0s;
     color: #fff;
 }
 /* faq */
-.faq-area .section-title p{
-font-size: 24px;
-margin-top: 25px;
-line-height: 34px;
+.faq-area {
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
 }
+
+.faq-area .section-title {
+  margin-bottom: 40px;
+}
+
+.faq-area .section-title h2 {
+  color: #1a1a2e;
+  font-weight: 700;
+  font-size: 32px;
+  margin-bottom: 15px;
+}
+
+.faq-area .section-title p {
+  font-size: 16px;
+  margin-top: 10px;
+  line-height: 26px;
+  color: #666;
+}
+
 .faq-img {
   margin-right: -350px;
 }
+
 .faq-btn {
-font-size: 17px;
-font-weight: 600;
-border: none;
-outline: none;
-cursor: pointer;
-padding: 20px 30px;
-  padding-right: 30px;
-width: 100%;
-text-align: left;
-padding-right: 75px;
-background: #fff;
-border: 1px solid #4899d2;
-border-radius: 4px;
-}
-.card .collapse.show {
-    display: block;
-}
-.faq-btn.collapsed {
- background: no-repeat;
-color: #190a32;
-border: 1px solid #c6c6c6;
-border-radius: 4px;
-}
-.faq-wrap .card-header:first-child {
-	border-radius: 0;
-}
-.faq-wrap .card-header {
-	padding: 0;
-	margin-bottom: 0;
-	background-color: unset;
-	border-bottom: none;
-}
-.faq-wrap .card-body {
-	-webkit-box-flex: 1;
-	-ms-flex: 1 1 auto;
-	flex: unset;
-	padding: 25px 0px;
-}
-.faq-wrap .card-header h2 {
-	font-size: unset !important;
-}
-.faq-wrap .card {
-border: none;
-border-radius: 4px !important;
-margin-bottom: 15px;
-box-shadow: none;
-overflow: hidden;
-background: no-repeat;
+  font-size: 16px;
+  font-weight: 500;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 22px 25px;
+  width: 100%;
+  text-align: left;
+  background: #ffffff;
+  border: 2px solid #e8e8e8;
+  border-radius: 8px;
+  color: #1a1a2e;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
-.faq-wrap .card:last-child {
-    
+.faq-btn:hover {
+  border-color: #4899d2;
+  background: #f0f8ff;
+  box-shadow: 0 4px 12px rgba(72, 153, 210, 0.15);
+  transform: translateX(5px);
 }
-.faq-wrap .card-header h2 button::after {
-position: absolute;
-content: "\f107";
-top: 5px;
-right: 5px;
-font-size: 26px;
-font-family: "Font Awesome 5 Pro";
-font-weight: 600;
-width: 50px;
-height: 50px;
-text-align: center;
-line-height: 50px;
-color: #4899d2;
-border-radius: 4px;
- 
+
+.faq-btn.collapsed {
+  background: #ffffff;
+  color: #1a1a2e;
+  border: 2px solid #e8e8e8;
+}
+
+.card .collapse.show {
+  display: block;
+}
+
+.faq-wrap .card-header:first-child {
+  border-radius: 8px;
+}
+
+.faq-wrap .card-header {
+  padding: 0;
+  margin-bottom: 0;
+  background-color: transparent;
+  border-bottom: none;
+}
+
+.faq-wrap .card-body {
+  padding: 25px;
+  background: #f8f9fa;
+  border-radius: 0 0 8px 8px;
+  border-top: 1px solid #e8e8e8;
+  color: #555;
+  font-size: 15px;
+  line-height: 26px;
 }
 
 .faq-wrap .card-header h2 button.collapsed::after {
-	content: "\f104";
-    color: #141b22;
-        box-shadow: none;
-    font-size: 26px;
-       border: 1px solid #c6c6c6;
+	display: none;
+}
+
+.faq-wrap .card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.faq-wrap .card:last-child {
+  margin-bottom: 0;
+}
+
+.faq-wrap .card-header h2 button::after {
+  display: none;
 }
 /* 15. blog */
 .home-blog-active {

@@ -5,6 +5,7 @@ import Mission from "../Menabout/Mission";
 import DirectorMessage from "../Menabout/DirectorMessage";
 import Testimonial from "../menhome/Testimonial";
 import Redslider from "../menhome/Redslider";
+import GoToTop from "../GoToTop/GoToTop";
 import blogbg3 from "../../assets/img/bg/banner_all.webp"; // Updated: Added banner image
 
 function Main() {
@@ -23,6 +24,7 @@ function Main() {
       <Testimonial />
       {/* <Brand /> */}
       <Redslider />
+      <GoToTop />
     </>
   );
 }

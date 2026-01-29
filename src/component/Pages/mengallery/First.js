@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "@fortawesome/fontawesome-free/css/all.min.css";
 import img01 from "../../../assets/img/gallery/protfolio-img01.webp";
 import img02 from "../../../assets/img/gallery/protfolio-img02.webp";
 import img03 from "../../../assets/img/gallery/protfolio-img03.webp";
@@ -25,6 +24,11 @@ import img23 from "../../../assets/img/gallery/protfolio-img23.webp";
 import img24 from "../../../assets/img/gallery/protfolio-img24.webp";
 import img25 from "../../../assets/img/gallery/protfolio-img25.webp";
 import img26 from "../../../assets/img/gallery/protfolio-img26.webp";
+import img27 from "../../../assets/img/gallery/kerala_piravi.webp";
+import img28 from "../../../assets/img/gallery/Onam.webp";
+import img29 from "../../../assets/img/gallery/womens_day.webp";
+import img30 from "../../../assets/img/gallery/sports2.webp";
+import img31 from "../../../assets/img/gallery/sports.webp";
 
 function First() {
   // Add fade-in animation styles
@@ -158,143 +162,171 @@ function First() {
       type: "video",
     },
     {
-      img: img07,
+      img: img01,
       category: "Placements",
       title: "MASOUDH M P",
       details: "Insurance Coordinator",
       type: "image",
     },
     {
-      img: img08,
+      img: img02,
       category: "Placements",
       title: "NAVEEN JOSEPH JOJI",
       details: "Warehouse Supervisor",
       type: "image",
     },
     {
-      img: img09,
+      img: img03,
       category: "Placements",
       title: "ASIYA BEEVI",
       details: "Guest Relation Executive",
       type: "image",
     },
     {
-      img: img10,
+      img: img04,
       category: "Placements",
       title: "JOVEEN JOHN",
       details: "Warehouse Supervisor",
       type: "image",
     },
     {
-      img: img11,
+      img: img06,
       category: "Placements",
       title: "SAJJAD V T",
       details: "Inventory Supervisor",
       type: "image",
     },
     {
-      img: img12,
+      img: img07,
       category: "Placements",
       title: "NAZEEL N",
       details: "Warehouse Supervisor",
       type: "image",
     },
     {
-      img: img13,
+      img: img08,
       category: "Placements",
       title: "ALAN KUNJUMON",
       details: "NDT Supervisor",
       type: "image",
     },
     {
-      img: img14,
+      img: img09,
       category: "Placements",
       title: "MEGHA AJI",
       details: "Patient Relation Officer",
       type: "image",
     },
     {
-      img: img15,
+      img: img10,
       category: "Placements",
       title: "FASIL T S",
       details: "Container Clearance Supervisor",
       type: "image",
     },
     {
-      img: img16,
+      img: img11,
       category: "Placements",
       title: "FEMINA",
       details: "Public Relation Executive",
       type: "image",
     },
     {
-      img: img17,
+      img: img12,
       category: "Placements",
       title: "NITHEESHA VINCENT",
       details: "Insurance Department",
       type: "image",
     },
     {
-      img: img18,
+      img: img13,
       category: "Placements",
       title: "ATHULYA",
       details: "HR Executive",
       type: "image",
     },
     {
-      img: img19,
+      img: img14,
       category: "Placements",
       title: "PRETTY MATHEW",
       details: "Finance Department",
       type: "image",
     },
     {
-      img: img20,
+      img: img15,
       category: "Placements",
       title: "NAJEEM E N",
       details: "Transportation Coordinator",
       type: "image",
     },
-    // {
-    //   img: img21,
-    //   category: "Placements",
-    //   title: "PREETHI",
-    //   details: "Patient Care Coordinator",
-    //   type: "image",
-    // },
     {
-      img: img22,
+      img: img16,
+      category: "Placements",
+      title: "PREETHI",
+      details: "Patient Care Coordinator",
+      type: "image",
+    },
+    {
+      img: img17,
       category: "Placements",
       title: "PARVATHY P",
       details: "Finance Department",
       type: "image",
     },
     {
-      img: img23,
+      img: img18,
       category: "Placements",
       title: "ALFIYA P I",
       details: "Junior Accountant",
       type: "image",
     },
     {
-      img: img24,
+      img: img19,
       category: "Placements",
       title: "SAJNA",
       details: "Business Administrator",
       type: "image",
     },
     {
-      img: img25,
+      img: img20,
       category: "Placements",
       title: "JOSEPH FRANCIS",
       details: "Hull Supervisor",
       type: "image",
     },
     {
-      img: img26,
+      img: img22,
       category: "Placements",
       title: "ARAVIND AV",
       details: "Piping Supervisor",
+      type: "image",
+    },
+    {
+      img: img23,
+      category: "Placements",
+      title: "SREEDEV S B",
+      details: "Structural Supervisor",
+      type: "image",
+    },
+    {
+      img: img24,
+      category: "Placements",
+      title: "JITHISH K",
+      details: "Welding Supervisor",
+      type: "image",
+    },
+     {
+      img: img25,
+      category: "Placements",
+      title: "ABHIMON S K",
+      details: "Piping Supervisor",
+      type: "image",
+    },
+     {
+      img: img26,
+      category: "Placements",
+      title: "RIJI M",
+      details: "HR Co-Ordinator",
       type: "image",
     },
     {
@@ -310,6 +342,41 @@ function First() {
       details: "Hear from our successful graduates",
       videoId: "vVYnhXNrxjk",
       type: "video",
+    },
+    {
+      img: img31,
+      category: "Student Events",
+      title: "achievements",
+      details: "Sports Day",
+      type: "image",
+    },
+    {
+      img: img30,
+      category: "Student Events",
+      title: "achievements",
+      details: "sports day",
+      type: "image",
+    },
+    {
+      img: img29,
+      category: "Student Events",
+      title: "womens day celebration",
+      details: "group photo",
+      type: "image",
+    },
+    {
+      img: img28,
+      category: "Student Events",
+      title: "Onam celebration",
+      details: "memorable moments from our events",
+      type: "image",
+    },
+    {
+      img: img27,
+      category: "Student Events",
+      title: "kerala piravi",
+      details: "Memorable moments from our events",
+      type: "image",
     },
   ];
 

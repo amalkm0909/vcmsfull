@@ -20,6 +20,20 @@ function Main() {
             >
               <div className="col-xl-3 col-lg-4 col-md-6 col-sm-12 mb-40">
                 <div className="footer-widget">
+                  <div className="f-logo mb-20">
+                    <Link to="/">
+                      <img
+                        src="/assets/img/logo/logo.jpeg"
+                        alt="VCMS Logo"
+                        style={{
+                          maxHeight: "100px",
+                          width: "auto",
+                          marginBottom: "20px",
+                          display: "block",
+                        }}
+                      />
+                    </Link>
+                  </div>
                   <div className="f-widget-title mb-20">
                     <h2
                       style={{
@@ -568,7 +582,7 @@ function Main() {
                 }}
               >
                 <Link
-                  to="#"
+                  to="/privacy"
                   style={{
                     color: "#0f3a5b",
                     textDecoration: "none",
@@ -595,7 +609,7 @@ function Main() {
                   |
                 </div>
                 <Link
-                  to="#"
+                  to="/terms-conditions"
                   style={{
                     color: "#0f3a5b",
                     textDecoration: "none",
@@ -621,28 +635,6 @@ function Main() {
                 >
                   |
                 </div>
-                <Link
-                  to="#"
-                  style={{
-                    color: "#0f3a5b",
-                    textDecoration: "none",
-                    fontSize: "11px",
-                    fontWeight: "400",
-                    transition: "all 0.3s ease",
-                    position: "relative",
-                    paddingBottom: "2px",
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.color = "#4899d2";
-                    e.currentTarget.style.transform = "translateY(-1px)";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.color = "#0f3a5b";
-                    e.currentTarget.style.transform = "translateY(0)";
-                  }}
-                >
-                  Disclaimer
-                </Link>
               </div>
             </div>
           </div>

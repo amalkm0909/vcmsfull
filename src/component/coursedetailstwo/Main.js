@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import Bredcom from "../Bredcom/Main";
 import First from "../mencoursedetailstwo/First";
 import Redslider from "../menhome/Redslider";
+import GoToTop from "../GoToTop/GoToTop";
 import blogbg from "../../assets/img/bg/banner_all.webp"; // Updated: Added banner image
 
 function Main() {
@@ -20,6 +21,7 @@ function Main() {
       {/* Updated: Added banner image and description */}
       <Redslider />
       <First courseId={actualCourseId} />
+      <GoToTop />
     </>
   );
 }

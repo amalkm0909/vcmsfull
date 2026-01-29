@@ -188,7 +188,7 @@ function Placements() {
             <div className="col-lg-12">
               <div className="text-center">
                 <Link
-                  to="/placements"
+                  to="/projects"
                   className="btn"
                   style={{
                     backgroundColor: "#4899d2",

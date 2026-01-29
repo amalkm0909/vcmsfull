@@ -7,9 +7,6 @@ function Campus() {
         className="steps-area2 p-relative fix"
         style={{ backgroundColor: "#2b2e83" }}
       >
-        <div className="animations-02">
-          <img src="assets/img/bg/an-img-10.png" alt="an-img-01" />
-        </div>
         <div className="container">
           <div className="row align-items-center">
             <div className="col-lg-6 col-md-12">
@@ -53,25 +50,14 @@ function Campus() {
         style={{ backgroundColor: "#0f3a5b" }}
       >
         <div className="container">
-          <div className="animations-08">
-            <img src="assets/img/bg/an-img-20.png" alt="contact-bg-an-01" />
-          </div>
           <div className="row align-items-center">
             <div className="col-lg-6 col-md-12">
-              <div
-                className="step-img3 wow fadeInLeft animated"
-                data-animation="fadeInLeft"
-                data-delay=".4s"
-              >
+              <div className="step-img3">
                 <img src="assets/img/bg/steps-img-3.png" alt="class image" />
               </div>
             </div>
             <div className="col-lg-6 col-md-12">
-              <div
-                className="step-box step-box3 wow fadeInUp animated"
-                data-animation="fadeInUp"
-                data-delay=".4s"
-              >
+              <div className="step-box step-box3">
                 <div className="dnumber">
                   <div className="date-box">
                     <img src="assets/img/icon/fea-icon03.png" alt="icon" />

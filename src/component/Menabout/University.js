@@ -5,17 +5,10 @@ function University() {
   return (
     <>
       <section className="about-area about-p pt-120 pb-30 p-relative fix">
-        <div className="animations-02">
-          <img src="assets/img/bg/an-img-02.png" alt="img" />
-        </div>
         <div className="container">
           <div className="row justify-content-center align-items-center">
             <div className="col-lg-6 col-md-12 col-sm-12">
-              <div
-                className="about-img"
-                data-animation="fadeInLeft"
-                data-delay=".4s"
-              >
+              <div className="about-img">
                 <img src={aboutImg} alt="img" />
                 <div
                   className="about-text second-about three-about"

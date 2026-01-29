@@ -2,6 +2,7 @@ import React from "react";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import Bredcom from "../../Bredcom/Main";
 import Redslider from "../../menhome/Redslider";
+import GoToTop from "../../GoToTop/GoToTop";
 import blogbg5 from "../../../assets/img/bg/banner_all.webp"; // Updated: Added banner image
 
 function Main() {
@@ -476,6 +477,7 @@ function Main() {
         </div>
       </section>
       <Redslider />
+      <GoToTop />
       {/* <Brand/> */}
     </>
   );

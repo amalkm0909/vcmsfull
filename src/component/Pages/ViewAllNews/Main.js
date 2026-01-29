@@ -1,6 +1,7 @@
 import React from "react";
 import Bredcom from "../../Bredcom/Main";
 import { Link } from "react-router-dom";
+import GoToTop from "../../GoToTop/GoToTop";
 
 function ViewAllNews() {
   const newsItems = [
@@ -143,6 +144,7 @@ function ViewAllNews() {
           </div>
         </div>
       </section>
+      <GoToTop />
     </>
   );
 }

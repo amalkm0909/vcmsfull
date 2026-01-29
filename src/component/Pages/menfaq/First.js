@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import GoToTop from "../../GoToTop/GoToTop";
 import campusImage from "../../../assets/img/bg/faqvideo.webp";
 
 const faqData = [
@@ -167,6 +168,7 @@ function First() {
           </div>
         </>
       )}
+      <GoToTop />
     </>
   );
 }

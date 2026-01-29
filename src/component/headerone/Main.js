@@ -3,13 +3,8 @@ import { Link, useLocation } from "react-router-dom";
 
 function Main() {
   const location = useLocation();
-  const [Btnshow, setBtnshow] = useState(false);
-  const [mobile, setmobile] = useState(false);
-  const [Events, setEvent] = useState(false);
-  const [News, setNews] = useState(false);
-  const [Services, setServices] = useState(false);
-  const [Blog, setblog] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   // Function to check if a link is active
   const isActive = (path) => {
@@ -18,9 +13,20 @@ function Main() {
 
   const [isScrolled, setIsScrolled] = useState(false);
 
+  const getMobileMenuItemStyle = () => ({
+    display: "block",
+    padding: windowWidth <= 576 ? "12px 0" : "15px 0",
+    fontSize: windowWidth <= 576 ? "13px" : "14px",
+    fontWeight: "400",
+    color: "#333",
+    textDecoration: "none",
+    transition: "all 0.3s ease",
+  });
+
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth > 1486) {
+      setWindowWidth(window.innerWidth);
+      if (window.innerWidth > 1024) {
         setMobileMenuOpen(false);
       }
     };
@@ -109,7 +115,10 @@ function Main() {
           id="header-sticky"
           className={`menu-area${isScrolled ? "menu-area sticky-menu" : ""}`}
         >
-          <div className="container-fluid">
+          <div
+            className="container-fluid"
+            style={{ padding: windowWidth <= 576 ? "0 10px" : "0 20px" }}
+          >
             <div
               className="second-menu"
               style={{
@@ -117,14 +126,15 @@ function Main() {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "space-between",
-                minHeight: "70px",
+                minHeight: windowWidth <= 576 ? "60px" : "70px",
+                padding: windowWidth <= 576 ? "10px 0" : "0",
               }}
             >
               <div
                 style={{
                   display: "flex",
                   alignItems: "center",
-                  gap: "30px",
+                  gap: windowWidth <= 768 ? "15px" : "30px",
                   width: "100%",
                   flexWrap: "nowrap",
                   justifyContent: "space-between",
@@ -142,10 +152,19 @@ function Main() {
                   >
                     <Link to="/">
                       <img
-                        src="/assets/img/logo/vcms_logo.png"
+                        src={
+                          windowWidth <= 768
+                            ? "/assets/img/logo/logo.webp"
+                            : "/assets/img/logo/vcms_logo.png"
+                        }
                         alt="VCMS Logo"
                         style={{
-                          maxHeight: "60px",
+                          maxHeight:
+                            windowWidth <= 480
+                              ? "40px"
+                              : windowWidth <= 768
+                                ? "50px"
+                                : "60px",
                           width: "auto",
                         }}
                       />
@@ -155,64 +174,48 @@ function Main() {
                 <div
                   style={{
                     flex: 1,
-                    display: "flex",
+                    display: windowWidth > 1024 ? "flex" : "none",
                     justifyContent: "center",
                     minWidth: "300px",
-                    "@media (maxWidth: 768px)": {
-                      display: mobileMenuOpen ? "block" : "none",
-                    },
                   }}
                 >
                   <div className="main-menu w-100">
                     <nav id="mobile-menu">
                       <ul
                         style={{
-                          display:
-                            window.innerWidth > 1486
-                              ? "flex"
-                              : mobileMenuOpen
-                                ? "flex"
-                                : "none",
-                          flexDirection:
-                            window.innerWidth > 1486 ? "row" : "column",
+                          display: windowWidth > 1024 ? "flex" : "none",
+                          flexDirection: "row",
                           justifyContent: "center",
-                          gap: window.innerWidth > 1486 ? "20px" : "0",
+                          gap: "20px",
                           flexWrap: "nowrap",
                           listStyle: "none",
                           margin: 0,
-                          padding: window.innerWidth > 1486 ? 0 : "15px 0",
+                          padding: 0,
                           overflowX: "auto",
-                          backgroundColor:
-                            window.innerWidth <= 1486 && mobileMenuOpen
-                              ? "#fff"
-                              : "transparent",
-                          position:
-                            window.innerWidth <= 1486 && mobileMenuOpen
-                              ? "absolute"
-                              : "static",
-                          top:
-                            window.innerWidth <= 1486 && mobileMenuOpen
-                              ? "70px"
-                              : "auto",
+                          backgroundColor: "transparent",
+                          position: "static",
+                          top: "auto",
                           left: 0,
                           right: 0,
                           zIndex: 1000,
-                          boxShadow:
-                            window.innerWidth <= 1486 && mobileMenuOpen
-                              ? "0 4px 6px rgba(0,0,0,0.1)"
-                              : "none",
+                          boxShadow: "none",
+                          maxHeight: "auto",
+                          overflowY: "visible",
                         }}
                       >
                         <li
                           className={isActive("/")}
-                          style={{ display: "flex" }}
+                          style={{
+                            display: "flex",
+                          }}
                         >
                           <Link
                             to="/"
                             style={{
                               transition: "all 0.3s ease",
-                              fontSize: "18px",
-                              fontWeight: "600",
+                              fontSize: "16px",
+                              fontWeight: "400",
+                              color: "#333",
                             }}
                           >
                             Home
@@ -220,14 +223,17 @@ function Main() {
                         </li>
                         <li
                           className={isActive("/courses")}
-                          style={{ display: "flex" }}
+                          style={{
+                            display: "flex",
+                          }}
                         >
                           <Link
                             to="/courses"
                             style={{
                               transition: "all 0.3s ease",
-                              fontSize: "18px",
-                              fontWeight: "600",
+                              fontSize: "16px",
+                              fontWeight: "400",
+                              color: "#333",
                             }}
                           >
                             Courses
@@ -235,14 +241,17 @@ function Main() {
                         </li>
                         <li
                           className={isActive("/about")}
-                          style={{ display: "flex" }}
+                          style={{
+                            display: "flex",
+                          }}
                         >
                           <Link
                             to="/about"
                             style={{
                               transition: "all 0.3s ease",
-                              fontSize: "18px",
-                              fontWeight: "600",
+                              fontSize: "16px",
+                              fontWeight: "400",
+                              color: "#333",
                             }}
                           >
                             About Us
@@ -250,14 +259,17 @@ function Main() {
                         </li>
                         <li
                           className={isActive("/event")}
-                          style={{ display: "flex" }}
+                          style={{
+                            display: "flex",
+                          }}
                         >
                           <Link
                             to="/event"
                             style={{
                               transition: "all 0.3s ease",
-                              fontSize: "18px",
-                              fontWeight: "600",
+                              fontSize: "16px",
+                              fontWeight: "400",
+                              color: "#333",
                             }}
                           >
                             Event
@@ -265,14 +277,17 @@ function Main() {
                         </li>
                         <li
                           className={isActive("/projects")}
-                          style={{ display: "flex" }}
+                          style={{
+                            display: "flex",
+                          }}
                         >
                           <Link
                             to="/projects"
                             style={{
                               transition: "all 0.3s ease",
-                              fontSize: "18px",
-                              fontWeight: "600",
+                              fontSize: "16px",
+                              fontWeight: "400",
+                              color: "#333",
                             }}
                           >
                             Gallery
@@ -280,14 +295,17 @@ function Main() {
                         </li>
                         <li
                           className={isActive("/campus-life")}
-                          style={{ display: "flex" }}
+                          style={{
+                            display: "flex",
+                          }}
                         >
                           <Link
                             to="/campus-life"
                             style={{
                               transition: "all 0.3s ease",
-                              fontSize: "18px",
-                              fontWeight: "600",
+                              fontSize: "16px",
+                              fontWeight: "400",
+                              color: "#333",
                             }}
                           >
                             Campus Life
@@ -295,14 +313,17 @@ function Main() {
                         </li>
                         <li
                           className={isActive("/team")}
-                          style={{ display: "flex" }}
+                          style={{
+                            display: "flex",
+                          }}
                         >
                           <Link
                             to="/team"
                             style={{
                               transition: "all 0.3s ease",
-                              fontSize: "18px",
-                              fontWeight: "600",
+                              fontSize: "16px",
+                              fontWeight: "400",
+                              color: "#333",
                             }}
                           >
                             Faculty
@@ -310,14 +331,17 @@ function Main() {
                         </li>
                         <li
                           className={isActive("/blog")}
-                          style={{ display: "flex" }}
+                          style={{
+                            display: "flex",
+                          }}
                         >
                           <Link
                             to="/blog"
                             style={{
                               transition: "all 0.3s ease",
-                              fontSize: "18px",
-                              fontWeight: "600",
+                              fontSize: "16px",
+                              fontWeight: "400",
+                              color: "#333",
                             }}
                           >
                             Blog
@@ -325,14 +349,17 @@ function Main() {
                         </li>
                         <li
                           className={isActive("/faq")}
-                          style={{ display: "flex" }}
+                          style={{
+                            display: "flex",
+                          }}
                         >
                           <Link
                             to="/faq"
                             style={{
                               transition: "all 0.3s ease",
-                              fontSize: "18px",
-                              fontWeight: "600",
+                              fontSize: "16px",
+                              fontWeight: "400",
+                              color: "#333",
                             }}
                           >
                             FAQ
@@ -340,14 +367,17 @@ function Main() {
                         </li>
                         <li
                           className={isActive("/contact")}
-                          style={{ display: "flex" }}
+                          style={{
+                            display: "flex",
+                          }}
                         >
                           <Link
                             to="/contact"
                             style={{
                               transition: "all 0.3s ease",
-                              fontSize: "18px",
-                              fontWeight: "600",
+                              fontSize: "16px",
+                              fontWeight: "400",
+                              color: "#333",
                             }}
                           >
                             Contact
@@ -365,45 +395,36 @@ function Main() {
                     flexShrink: 0,
                   }}
                 >
-                  {window.innerWidth <= 1486 && (
-                    <button
-                      onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                      style={{
-                        background: "none",
-                        border: "none",
-                        cursor: "pointer",
-                        fontSize: "24px",
-                        padding: "10px",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                      }}
-                    >
-                      <i
-                        className={`fas ${mobileMenuOpen ? "fa-times" : "fa-bars"}`}
-                      ></i>
-                    </button>
-                  )}
                   <div
                     className="login"
                     style={{
                       display: "flex",
-                      justifyContent: "flex-end",
+                      justifyContent:
+                        windowWidth <= 768 ? "center" : "flex-end",
                       alignItems: "center",
                       position: "relative",
                       zIndex: 100,
+                      width: windowWidth <= 768 ? "100%" : "auto",
+                      marginTop: windowWidth <= 768 ? "15px" : 0,
+                      padding: windowWidth <= 768 ? "0 10px" : 0,
                     }}
                   >
                     <ul
                       style={{
                         display: "flex",
-                        justifyContent: "flex-end",
+                        justifyContent:
+                          windowWidth <= 768 ? "center" : "flex-end",
                         alignItems: "center",
                         marginBottom: 0,
                         gap: "10px",
+                        width: windowWidth <= 768 ? "100%" : "auto",
                       }}
                     >
-                      <li>
+                      <li
+                        style={{
+                          width: windowWidth <= 768 ? "100%" : "auto",
+                        }}
+                      >
                         <div className="second-header-btn">
                           <a
                             href="https://wa.me/918593977877"
@@ -412,205 +433,339 @@ function Main() {
                             className="btn"
                             style={{
                               borderRadius: "25px",
-                              padding: "12px 26px",
-                              fontSize: "13px",
-                              fontWeight: "600",
+                              padding:
+                                windowWidth <= 480
+                                  ? "11px 14px"
+                                  : windowWidth <= 576
+                                    ? "12px 16px"
+                                    : windowWidth <= 768
+                                      ? "13px 22px"
+                                      : "12px 26px",
+                              fontSize:
+                                windowWidth <= 480
+                                  ? "11px"
+                                  : windowWidth <= 576
+                                    ? "12px"
+                                    : windowWidth <= 768
+                                      ? "12.5px"
+                                      : "13px",
+                              fontWeight: "400",
+                              display: "block",
+                              textAlign: "center",
+                              width: windowWidth <= 1024 ? "100%" : "auto",
+                              whiteSpace: "nowrap",
                             }}
                           >
-                            {" "}
-                            admission open{" "}
+                            admission open
                           </a>
                         </div>
                       </li>
                     </ul>
                   </div>
+                  {windowWidth <= 1024 && (
+                    <button
+                      onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                      style={{
+                        background: "none",
+                        border: "none",
+                        cursor: "pointer",
+                        fontSize: windowWidth <= 768 ? "16px" : "20px",
+                        padding: "6px 8px",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        color: "#333",
+                        transition: "all 0.3s ease",
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.color = "#4899d2";
+                        e.currentTarget.style.transform = "scale(1.15)";
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.color = "#333";
+                        e.currentTarget.style.transform = "scale(1)";
+                      }}
+                    >
+                      <i
+                        className={`fas ${mobileMenuOpen ? "fa-times" : "fa-bars"}`}
+                      ></i>
+                    </button>
+                  )}
                 </div>
               </div>
             </div>
-            <div className="mobile-menu mean-container">
-              <div className="mean-bar">
-                <a
-                  href="#nav"
-                  onClick={() => setmobile(!mobile)}
-                  className={`meanmenu-reveal ${mobile && "meanclose"}`}
-                  style={{
-                    right: 0,
-                    left: "auto",
-                    textAlign: "center",
-                    textIndent: 0,
-                    fontSize: 18,
-                  }}
-                >
-                  {mobile ? (
-                    "X"
-                  ) : (
-                    <span>
-                      <span>
-                        <span></span>
-                      </span>
-                    </span>
-                  )}
-                </a>
-                {mobile && (
-                  <nav className="mean-nav">
-                    <ul style={{ display: "block" }}>
-                      <li className="has-sub">
-                        <a href="/">Home</a>
-                        {Events && (
-                          <ul className="display-block">
-                            <li>
-                              <Link to="/">University</Link>
-                            </li>
-                          </ul>
-                        )}
-                        <a
-                          className={`mean-expand ${mobile && "mean-clicked"}`}
-                          onClick={() => {
-                            setEvent(!Events);
-                          }}
-                          href="#"
-                          style={{ fontSize: 18 }}
-                        >
-                          {Events ? "-" : "+"}
-                        </a>
-                      </li>
-                      <li>
-                        <Link to="/about">About Us</Link>
-                      </li>
-                      <li className="has-sub">
-                        <Link to="/courses">Courses</Link>
-                        {News && (
-                          <ul className="display-block">
-                            <li>
-                              <Link to="/courses">Courses</Link>
-                            </li>
-                            <li>
-                              {" "}
-                              <Link to="/courses-2">Courses 02</Link>
-                            </li>
-                            <li>
-                              {" "}
-                              <Link to="/single-courses">Course Details</Link>
-                            </li>
-                            <li>
-                              {" "}
-                              <Link to="/single-courses-2">
-                                Course Details 02
-                              </Link>
-                            </li>
-                          </ul>
-                        )}
-
-                        <a
-                          className={`mean-expand ${mobile && "mean-clicked"}`}
-                          onClick={() => {
-                            setNews(!News);
-                          }}
-                          href="#"
-                          style={{ fontSize: 18 }}
-                        >
-                          {News ? "-" : "+"}
-                        </a>
-                      </li>
-                      <li className="has-sub">
-                        <Link to="/blog">Blog</Link>
-                        {Blog && (
-                          <ul className="display-block">
-                            <li>
-                              <Link to="/blog">Blog</Link>
-                            </li>
-                            <li>
-                              <Link to="/blog-details">Blog Details</Link>
-                            </li>
-                          </ul>
-                        )}
-                        <a
-                          className={`mean-expand ${mobile && "mean-clicked"}`}
-                          onClick={() => {
-                            setblog(!Blog);
-                          }}
-                          href="#"
-                          style={{ fontSize: 18 }}
-                        >
-                          {Blog ? "-" : "+"}
-                        </a>
-                      </li>
-                      <li className="mean-last">
-                        <Link to="/contact">Contact</Link>
-                      </li>
-                    </ul>
-                  </nav>
-                )}
+            {windowWidth <= 1024 && mobileMenuOpen && (
+              <div
+                style={{
+                  position: "relative",
+                  backgroundColor: "#fff",
+                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+                  zIndex: 999,
+                  padding: windowWidth <= 576 ? "15px 10px" : "20px",
+                  maxHeight: `calc(100vh - ${windowWidth <= 576 ? 60 : 70}px)`,
+                  overflowY: "auto",
+                }}
+              >
+                <nav id="mobile-menu-dropdown">
+                  <ul
+                    style={{
+                      listStyle: "none",
+                      margin: 0,
+                      padding: 0,
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: "0",
+                    }}
+                  >
+                    <li style={{ borderBottom: "1px solid #e0e0e0" }}>
+                      <Link
+                        to="/"
+                        onClick={() => setMobileMenuOpen(false)}
+                        style={getMobileMenuItemStyle()}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.color = "#4899d2";
+                          e.currentTarget.style.paddingLeft = "10px";
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.color = "#333";
+                          e.currentTarget.style.paddingLeft = "0";
+                        }}
+                      >
+                        Home
+                      </Link>
+                    </li>
+                    <li style={{ borderBottom: "1px solid #e0e0e0" }}>
+                      <Link
+                        to="/courses"
+                        onClick={() => setMobileMenuOpen(false)}
+                        style={{
+                          display: "block",
+                          padding: "15px 0",
+                          fontSize: "16px",
+                          fontWeight: "400",
+                          color: "#333",
+                          textDecoration: "none",
+                          transition: "all 0.3s ease",
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.color = "#4899d2";
+                          e.currentTarget.style.paddingLeft = "10px";
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.color = "#333";
+                          e.currentTarget.style.paddingLeft = "0";
+                        }}
+                      >
+                        Courses
+                      </Link>
+                    </li>
+                    <li style={{ borderBottom: "1px solid #e0e0e0" }}>
+                      <Link
+                        to="/about"
+                        onClick={() => setMobileMenuOpen(false)}
+                        style={{
+                          display: "block",
+                          padding: "15px 0",
+                          fontSize: "16px",
+                          fontWeight: "400",
+                          color: "#333",
+                          textDecoration: "none",
+                          transition: "all 0.3s ease",
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.color = "#4899d2";
+                          e.currentTarget.style.paddingLeft = "10px";
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.color = "#333";
+                          e.currentTarget.style.paddingLeft = "0";
+                        }}
+                      >
+                        About Us
+                      </Link>
+                    </li>
+                    <li style={{ borderBottom: "1px solid #e0e0e0" }}>
+                      <Link
+                        to="/event"
+                        onClick={() => setMobileMenuOpen(false)}
+                        style={{
+                          display: "block",
+                          padding: "15px 0",
+                          fontSize: "16px",
+                          fontWeight: "400",
+                          color: "#333",
+                          textDecoration: "none",
+                          transition: "all 0.3s ease",
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.color = "#4899d2";
+                          e.currentTarget.style.paddingLeft = "10px";
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.color = "#333";
+                          e.currentTarget.style.paddingLeft = "0";
+                        }}
+                      >
+                        Event
+                      </Link>
+                    </li>
+                    <li style={{ borderBottom: "1px solid #e0e0e0" }}>
+                      <Link
+                        to="/projects"
+                        onClick={() => setMobileMenuOpen(false)}
+                        style={{
+                          display: "block",
+                          padding: "15px 0",
+                          fontSize: "16px",
+                          fontWeight: "400",
+                          color: "#333",
+                          textDecoration: "none",
+                          transition: "all 0.3s ease",
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.color = "#4899d2";
+                          e.currentTarget.style.paddingLeft = "10px";
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.color = "#333";
+                          e.currentTarget.style.paddingLeft = "0";
+                        }}
+                      >
+                        Gallery
+                      </Link>
+                    </li>
+                    <li style={{ borderBottom: "1px solid #e0e0e0" }}>
+                      <Link
+                        to="/campus-life"
+                        onClick={() => setMobileMenuOpen(false)}
+                        style={{
+                          display: "block",
+                          padding: "15px 0",
+                          fontSize: "16px",
+                          fontWeight: "400",
+                          color: "#333",
+                          textDecoration: "none",
+                          transition: "all 0.3s ease",
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.color = "#4899d2";
+                          e.currentTarget.style.paddingLeft = "10px";
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.color = "#333";
+                          e.currentTarget.style.paddingLeft = "0";
+                        }}
+                      >
+                        Campus Life
+                      </Link>
+                    </li>
+                    <li style={{ borderBottom: "1px solid #e0e0e0" }}>
+                      <Link
+                        to="/team"
+                        onClick={() => setMobileMenuOpen(false)}
+                        style={{
+                          display: "block",
+                          padding: "15px 0",
+                          fontSize: "16px",
+                          fontWeight: "400",
+                          color: "#333",
+                          textDecoration: "none",
+                          transition: "all 0.3s ease",
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.color = "#4899d2";
+                          e.currentTarget.style.paddingLeft = "10px";
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.color = "#333";
+                          e.currentTarget.style.paddingLeft = "0";
+                        }}
+                      >
+                        Faculty
+                      </Link>
+                    </li>
+                    <li style={{ borderBottom: "1px solid #e0e0e0" }}>
+                      <Link
+                        to="/blog"
+                        onClick={() => setMobileMenuOpen(false)}
+                        style={{
+                          display: "block",
+                          padding: "15px 0",
+                          fontSize: "16px",
+                          fontWeight: "400",
+                          color: "#333",
+                          textDecoration: "none",
+                          transition: "all 0.3s ease",
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.color = "#4899d2";
+                          e.currentTarget.style.paddingLeft = "10px";
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.color = "#333";
+                          e.currentTarget.style.paddingLeft = "0";
+                        }}
+                      >
+                        Blog
+                      </Link>
+                    </li>
+                    <li style={{ borderBottom: "1px solid #e0e0e0" }}>
+                      <Link
+                        to="/faq"
+                        onClick={() => setMobileMenuOpen(false)}
+                        style={{
+                          display: "block",
+                          padding: "15px 0",
+                          fontSize: "16px",
+                          fontWeight: "400",
+                          color: "#333",
+                          textDecoration: "none",
+                          transition: "all 0.3s ease",
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.color = "#4899d2";
+                          e.currentTarget.style.paddingLeft = "10px";
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.color = "#333";
+                          e.currentTarget.style.paddingLeft = "0";
+                        }}
+                      >
+                        FAQ
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        to="/contact"
+                        onClick={() => setMobileMenuOpen(false)}
+                        style={{
+                          display: "block",
+                          padding: "15px 0",
+                          fontSize: "16px",
+                          fontWeight: "400",
+                          color: "#333",
+                          textDecoration: "none",
+                          transition: "all 0.3s ease",
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.color = "#4899d2";
+                          e.currentTarget.style.paddingLeft = "10px";
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.color = "#333";
+                          e.currentTarget.style.paddingLeft = "0";
+                        }}
+                      >
+                        Contact
+                      </Link>
+                    </li>
+                  </ul>
+                </nav>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </header>
-
-      {Btnshow && (
-        <>
-          <div className={`offcanvas-menu ${"active"}`}>
-            <span className="menu-close" onClick={() => setBtnshow(false)}>
-              <i className="fas fa-times" onClick={() => setBtnshow(false)} />
-            </span>
-            <form
-              role="search"
-              method="get"
-              id="searchform"
-              className="searchform"
-              action="http://wordpress.zcube.in/xconsulta/"
-            >
-              <input type="text" name="s" id="search" placeholder="Search" />
-              <button>
-                <i className="fa fa-search" />
-              </button>
-            </form>
-            <div id="cssmenu3" className="menu-one-page-menu-container">
-              <ul className="menu">
-                <li className="menu-item menu-item-type-custom menu-item-object-custom">
-                  <Link to="/">Home</Link>
-                </li>
-                <li className="menu-item menu-item-type-custom menu-item-object-custom">
-                  <Link to="/about">About Us</Link>
-                </li>
-                <li className="menu-item menu-item-type-custom menu-item-object-custom">
-                  <Link to="/courses">Courses</Link>
-                </li>
-                <li className="menu-item menu-item-type-custom menu-item-object-custom">
-                  <Link to="/team">Teacher</Link>
-                </li>
-                <li className="menu-item menu-item-type-custom menu-item-object-custom">
-                  <Link to="/projects">Gallery</Link>
-                </li>
-                <li className="menu-item menu-item-type-custom menu-item-object-custom">
-                  <Link to="/campus-life">Campus Life</Link>
-                </li>
-                <li className="menu-item menu-item-type-custom menu-item-object-custom">
-                  <Link to="/blog">Blog</Link>
-                </li>
-                <li className="menu-item menu-item-type-custom menu-item-object-custom">
-                  <Link to="/contact">Contact</Link>
-                </li>
-              </ul>
-            </div>
-            <div id="cssmenu2" className="menu-one-page-menu-container">
-              <ul id="menu-one-page-menu-12" className="menu">
-                <li className="menu-item menu-item-type-custom menu-item-object-custom">
-                  <Link to="#home">
-                    <span>+8 12 3456897</span>
-                  </Link>
-                </li>
-                <li className="menu-item menu-item-type-custom menu-item-object-custom">
-                  <Link to="#howitwork">
-                    <span>info@example.com</span>
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div className={`offcanvas-overly ${"active"}`}> </div>
-        </>
-      )}
     </>
   );
 }

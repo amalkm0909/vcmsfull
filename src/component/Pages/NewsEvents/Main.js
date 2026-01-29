@@ -2,6 +2,7 @@ import React from "react";
 import Header from "../../headerone/Main";
 import Bredcom from "../../Bredcom/Main";
 import Redslider from "../../menhome/Redslider";
+import GoToTop from "../../GoToTop/GoToTop";
 
 function Main() {
   return (
@@ -65,6 +66,7 @@ function Main() {
           </div>
         </div>
       </section>
+      <GoToTop />
       {/* <Brand/> */}
     </>
   );

@@ -4,6 +4,7 @@ import Redslider from "../menhome/Redslider";
 import Touch from "../mencontact/Touch";
 import Map from "../mencontact/Map";
 import Form from "../mencontact/Form";
+import GoToTop from "../GoToTop/GoToTop";
 import blogbg9 from "../../assets/img/bg/banner_all.webp"; // Updated: Added banner image
 
 function Main() {
@@ -20,6 +21,7 @@ function Main() {
       <Map />
       <Form />
       <Redslider />
+      <GoToTop />
       {/* <Brand/> */}
     </>
   );

@@ -1,6 +1,102 @@
-import React from "react";
+import React, { useState } from "react";
 
 function Search() {
+  const [formData, setFormData] = useState({
+    firstn: "",
+    email: "",
+    instructor: "",
+    department: "",
+    campus: "",
+    level: "",
+  });
+
+  const [errors, setErrors] = useState({});
+  const [touched, setTouched] = useState({});
+
+  const validateForm = () => {
+    const newErrors = {};
+
+    if (!formData.firstn.trim()) {
+      newErrors.firstn = "Name is required";
+    }
+
+    if (!formData.email.trim()) {
+      newErrors.email = "Email is required";
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = "Email is invalid";
+    }
+
+    return newErrors;
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+    if (touched[name]) {
+      const newErrors = { ...errors };
+      if (name === "firstn" && !value.trim()) {
+        newErrors.firstn = "Name is required";
+      } else if (name === "firstn") {
+        delete newErrors.firstn;
+      }
+      if (name === "email" && !value.trim()) {
+        newErrors.email = "Email is required";
+      } else if (name === "email" && !/\S+@\S+\.\S+/.test(value)) {
+        newErrors.email = "Email is invalid";
+      } else if (name === "email") {
+        delete newErrors.email;
+      }
+      setErrors(newErrors);
+    }
+  };
+
+  const handleBlur = (e) => {
+    const { name } = e.target;
+    setTouched((prev) => ({
+      ...prev,
+      [name]: true,
+    }));
+
+    const newErrors = { ...errors };
+    if (name === "firstn" && !formData.firstn.trim()) {
+      newErrors.firstn = "Name is required";
+    }
+    if (name === "email") {
+      if (!formData.email.trim()) {
+        newErrors.email = "Email is required";
+      } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+        newErrors.email = "Email is invalid";
+      }
+    }
+    setErrors(newErrors);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const newErrors = validateForm();
+
+    if (Object.keys(newErrors).length === 0) {
+      alert("Search submitted successfully!");
+      setFormData({
+        firstn: "",
+        email: "",
+        instructor: "",
+        department: "",
+        campus: "",
+        level: "",
+      });
+      setTouched({});
+    } else {
+      setErrors(newErrors);
+      setTouched({
+        firstn: true,
+        email: true,
+      });
+    }
+  };
   return (
     <>
       <section
@@ -12,21 +108,11 @@ function Search() {
           backgroundSize: "cover",
         }}
       >
-        <div className="animations-10">
-          <img src="assets/img/bg/an-img-04.png" alt="an-img-01" />
-        </div>
-        <div className="animations-08">
-          <img src="assets/img/bg/an-img-05.png" alt="contact-bg-an-01" />
-        </div>
         <div className="container">
           <div className="row justify-content-center  align-items-center">
             <div className="col-lg-8">
               <div className="contact-bg">
-                <div
-                  className="section-title wow fadeInDown animated"
-                  data-animation="fadeInDown"
-                  data-delay=".4s"
-                >
+                <div className="section-title">
                   <h2>Search For Courses</h2>
                   <p>
                     Our community is being called to reimagine the future. As
@@ -38,9 +124,8 @@ function Search() {
                 <form
                   action="mail.php"
                   method="post"
-                  className="contact-form mt-30 wow fadeInUp animated"
-                  data-animation="fadeInUp"
-                  data-delay=".4s"
+                  className="contact-form mt-30"
+                  onSubmit={handleSubmit}
                 >
                   <div className="row">
                     <div className="col-lg-6">
@@ -50,25 +135,82 @@ function Search() {
                           id="firstn2"
                           name="firstn"
                           placeholder="First Name"
-                          required=""
+                          value={formData.firstn}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          style={{
+                            borderColor:
+                              errors.firstn && touched.firstn
+                                ? "#dc2626"
+                                : "#ccc",
+                          }}
                         />
+                        {errors.firstn && touched.firstn && (
+                          <div
+                            style={{
+                              color: "#dc2626",
+                              fontSize: "0.8rem",
+                              marginTop: "5px",
+                              display: "flex",
+                              alignItems: "center",
+                              gap: "4px",
+                            }}
+                          >
+                            <i
+                              className="fas fa-exclamation-circle"
+                              style={{ fontSize: "0.75rem" }}
+                            />
+                            {errors.firstn}
+                          </div>
+                        )}
                       </div>
                     </div>
                     <div className="col-lg-6">
                       <div className="contact-field p-relative c-subject mb-20">
                         <input
-                          type="text"
+                          type="email"
                           id="email3"
                           name="email"
                           placeholder="Email"
-                          required=""
+                          value={formData.email}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          style={{
+                            borderColor:
+                              errors.email && touched.email
+                                ? "#dc2626"
+                                : "#ccc",
+                          }}
                         />
+                        {errors.email && touched.email && (
+                          <div
+                            style={{
+                              color: "#dc2626",
+                              fontSize: "0.8rem",
+                              marginTop: "5px",
+                              display: "flex",
+                              alignItems: "center",
+                              gap: "4px",
+                            }}
+                          >
+                            <i
+                              className="fas fa-exclamation-circle"
+                              style={{ fontSize: "0.75rem" }}
+                            />
+                            {errors.email}
+                          </div>
+                        )}
                       </div>
                     </div>
                     <div className="col-lg-6">
                       <div className="contact-field p-relative c-option mb-20">
-                        <select name="instructor" id="instructor">
-                          <option value="instructore">Instructor</option>
+                        <select
+                          name="instructor"
+                          id="instructor"
+                          value={formData.instructor}
+                          onChange={handleChange}
+                        >
+                          <option value="">Instructor</option>
                           <option value="hot-stone-message">
                             Hot Stone Message
                           </option>
@@ -80,8 +222,13 @@ function Search() {
                     </div>
                     <div className="col-lg-6">
                       <div className="contact-field p-relative c-option mb-20">
-                        <select name="department" id="department">
-                          <option value="department">Department</option>
+                        <select
+                          name="department"
+                          id="department"
+                          value={formData.department}
+                          onChange={handleChange}
+                        >
+                          <option value="">Department</option>
                           <option value="hot-stone-message">
                             Hot Stone Message
                           </option>
@@ -93,8 +240,13 @@ function Search() {
                     </div>
                     <div className="col-lg-6">
                       <div className="contact-field p-relative c-option mb-20">
-                        <select name="campus" id="campus">
-                          <option value="campus">Campus</option>
+                        <select
+                          name="campus"
+                          id="campus"
+                          value={formData.campus}
+                          onChange={handleChange}
+                        >
+                          <option value="">Campus</option>
                           <option value="hot-stone-message">
                             Hot Stone Message
                           </option>
@@ -106,8 +258,13 @@ function Search() {
                     </div>
                     <div className="col-lg-6">
                       <div className="contact-field p-relative c-option mb-20">
-                        <select name="level" id="level">
-                          <option value="level">Level</option>
+                        <select
+                          name="level"
+                          id="level"
+                          value={formData.level}
+                          onChange={handleChange}
+                        >
+                          <option value="">Level</option>
                           <option value="hot-stone-message">
                             Hot Stone Message
                           </option>
@@ -119,11 +276,7 @@ function Search() {
                     </div>
                     <div className="col-lg-12">
                       <div className="slider-btn">
-                        <button
-                          className="btn ss-btn"
-                          data-animation="fadeInRight"
-                          data-delay=".8s"
-                        >
+                        <button className="btn ss-btn" type="submit">
                           Search Courses Here{" "}
                           <i className="fal fa-long-arrow-right" />
                         </button>

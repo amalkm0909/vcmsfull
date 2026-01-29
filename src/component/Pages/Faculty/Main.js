@@ -3,6 +3,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import Header from "../../headerone/Main";
 import Bredcom from "../../Bredcom/Main";
 import Redslider from "../../menhome/Redslider";
+import GoToTop from "../../GoToTop/GoToTop";
 import blogbg6 from "../../../assets/img/bg/banner_all.webp"; // Updated: Added banner image
 
       <Bredcom
@@ -297,6 +298,7 @@ function Main() {
       </section>
 
       <Redslider />
+      <GoToTop />
     </>
   );
 }

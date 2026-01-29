@@ -74,9 +74,7 @@ function Courses() {
   return (
     <>
       <section className="courses pt-120 pb-120 p-relative fix">
-        <div className="animations-01">
-          <img src="assets/img/bg/an-img-03.png" alt="an-img-01" />
-        </div>
+        
         <div className="container">
           <div className="row">
             <div className="col-lg-12 p-relative">

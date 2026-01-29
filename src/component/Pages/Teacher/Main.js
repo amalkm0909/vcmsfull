@@ -2,6 +2,7 @@ import React from "react";
 import Bredcom from "../../Bredcom/Main";
 import Redslider from "../../menhome/Redslider";
 import First from "../menteacher/First";
+import GoToTop from "../../GoToTop/GoToTop";
 import blogbg from "../../../assets/img/bg/banner_all.webp"; // Updated: Added banner image
 
 function Main() {
@@ -18,6 +19,7 @@ function Main() {
       {/* <Brand/> */}
       {/* <Expert /> */}
       <Redslider />
+      <GoToTop />
     </>
   );
 }

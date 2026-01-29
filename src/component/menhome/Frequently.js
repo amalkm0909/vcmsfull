@@ -35,28 +35,101 @@ const faqItems = [
 
 function Frequently() {
   const [activeIndex, setActiveIndex] = useState(null);
+  const [formData, setFormData] = useState({
+    firstn: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
+  const [errors, setErrors] = useState({});
+  const [touched, setTouched] = useState({});
 
   const handleToggle = (index) => {
     setActiveIndex((prevIndex) => (prevIndex === index ? null : index));
   };
 
+  const validateForm = () => {
+    const newErrors = {};
+    if (!formData.firstn.trim()) {
+      newErrors.firstn = "Name is required";
+    }
+    if (!formData.email.trim()) {
+      newErrors.email = "Email is required";
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = "Email is invalid";
+    }
+    if (!formData.phone.trim()) {
+      newErrors.phone = "Phone is required";
+    }
+    return newErrors;
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    if (touched[name]) {
+      const newErrors = { ...errors };
+      if (name === "firstn" && !value.trim()) {
+        newErrors.firstn = "Name is required";
+      } else if (name === "firstn") {
+        delete newErrors.firstn;
+      }
+      if (name === "email" && !value.trim()) {
+        newErrors.email = "Email is required";
+      } else if (name === "email" && !/\S+@\S+\.\S+/.test(value)) {
+        newErrors.email = "Email is invalid";
+      } else if (name === "email") {
+        delete newErrors.email;
+      }
+      if (name === "phone" && !value.trim()) {
+        newErrors.phone = "Phone is required";
+      } else if (name === "phone") {
+        delete newErrors.phone;
+      }
+      setErrors(newErrors);
+    }
+  };
+
+  const handleBlur = (e) => {
+    const { name } = e.target;
+    setTouched((prev) => ({ ...prev, [name]: true }));
+    const newErrors = { ...errors };
+    if (name === "firstn" && !formData.firstn.trim()) {
+      newErrors.firstn = "Name is required";
+    }
+    if (name === "email") {
+      if (!formData.email.trim()) {
+        newErrors.email = "Email is required";
+      } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+        newErrors.email = "Email is invalid";
+      }
+    }
+    if (name === "phone" && !formData.phone.trim()) {
+      newErrors.phone = "Phone is required";
+    }
+    setErrors(newErrors);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const newErrors = validateForm();
+    if (Object.keys(newErrors).length === 0) {
+      alert("Form submitted successfully!");
+      setFormData({ firstn: "", email: "", phone: "", message: "" });
+      setTouched({});
+    } else {
+      setErrors(newErrors);
+      setTouched({ firstn: true, email: true, phone: true });
+    }
+  };
+
   return (
     <>
       <section className="faq-area pt-120 pb-120 p-relative fix">
-        <div className="animations-10">
-          <img src="assets/img/bg/an-img-04.png" alt="an-img-01" />
-        </div>
-        <div className="animations-08">
-          <img src="assets/img/bg/an-img-05.png" alt="contact-bg-an-01" />
-        </div>
         <div className="container">
           <div className="row justify-content-center  align-items-center">
             <div className="col-lg-7">
-              <div
-                className="section-title wow fadeInLeft animated"
-                data-animation="fadeInDown animated"
-                data-delay=".2s"
-              >
+              <div className="section-title">
                 <h2>Frequently Asked Questions</h2>
                 <p>
                   Find answers to common questions about VCMS courses,
@@ -77,8 +150,38 @@ function Frequently() {
                             data-bs-toggle="collapse"
                             data-bs-target={`#collapse${index}`}
                             onClick={() => handleToggle(index)}
+                            style={{
+                              display: "flex",
+                              alignItems: "center",
+                              width: "100%",
+                              position: "relative",
+                            }}
                           >
-                            {item.question}
+                            <span style={{ flex: 1 }}>{item.question}</span>
+                            <i
+                              className="fas fa-chevron-down"
+                              style={{
+                                width: "36px",
+                                height: "36px",
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                border: "2px solid #4899d2",
+                                borderRadius: "50%",
+                                color: "#4899d2",
+                                fontSize: "14px",
+                                transition: "all 0.3s ease",
+                                transform:
+                                  activeIndex === index
+                                    ? "rotate(-180deg)"
+                                    : "rotate(0deg)",
+                                flexShrink: 0,
+                                backgroundColor:
+                                  activeIndex === index
+                                    ? "rgba(72, 153, 210, 0.1)"
+                                    : "transparent",
+                              }}
+                            />
                           </button>
                         </h2>
                       </div>
@@ -128,19 +231,14 @@ function Frequently() {
             </div>
             <div className="col-lg-5">
               <div className="contact-bg02">
-                <div
-                  className="section-title wow fadeInDown animated"
-                  data-animation="fadeInDown"
-                  data-delay=".4s"
-                >
+                <div className="section-title">
                   <h2>Make An Contact</h2>
                 </div>
                 <form
                   action="mail.php"
                   method="post"
-                  className="contact-form mt-30 wow fadeInUp animated"
-                  data-animation="fadeInUp"
-                  data-delay=".4s"
+                  className="contact-form mt-30"
+                  onSubmit={handleSubmit}
                 >
                   <div className="row">
                     <div className="col-lg-12">
@@ -150,30 +248,108 @@ function Frequently() {
                           id="firstn"
                           name="firstn"
                           placeholder="First Name"
-                          required=""
+                          value={formData.firstn}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          style={{
+                            borderColor:
+                              errors.firstn && touched.firstn
+                                ? "#dc2626"
+                                : "#ccc",
+                          }}
                         />
+                        {errors.firstn && touched.firstn && (
+                          <div
+                            style={{
+                              color: "#dc2626",
+                              fontSize: "0.8rem",
+                              marginTop: "5px",
+                              display: "flex",
+                              alignItems: "center",
+                              gap: "4px",
+                            }}
+                          >
+                            <i
+                              className="fas fa-exclamation-circle"
+                              style={{ fontSize: "0.75rem" }}
+                            />
+                            {errors.firstn}
+                          </div>
+                        )}
                       </div>
                     </div>
                     <div className="col-lg-12">
-                      <div className="contact-field p-relative c-subject mb-20">
+                      <div className="contact-field p-relative c-email mb-20">
                         <input
-                          type="text"
+                          type="email"
                           id="email"
                           name="email"
                           placeholder="Email"
-                          required=""
+                          value={formData.email}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          style={{
+                            borderColor:
+                              errors.email && touched.email
+                                ? "#dc2626"
+                                : "#ccc",
+                          }}
                         />
+                        {errors.email && touched.email && (
+                          <div
+                            style={{
+                              color: "#dc2626",
+                              fontSize: "0.8rem",
+                              marginTop: "5px",
+                              display: "flex",
+                              alignItems: "center",
+                              gap: "4px",
+                            }}
+                          >
+                            <i
+                              className="fas fa-exclamation-circle"
+                              style={{ fontSize: "0.75rem" }}
+                            />
+                            {errors.email}
+                          </div>
+                        )}
                       </div>
                     </div>
                     <div className="col-lg-12">
                       <div className="contact-field p-relative c-subject mb-20">
                         <input
-                          type="text"
+                          type="tel"
                           id="phone"
                           name="phone"
                           placeholder="Phone No."
-                          required=""
+                          value={formData.phone}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          style={{
+                            borderColor:
+                              errors.phone && touched.phone
+                                ? "#dc2626"
+                                : "#ccc",
+                          }}
                         />
+                        {errors.phone && touched.phone && (
+                          <div
+                            style={{
+                              color: "#dc2626",
+                              fontSize: "0.8rem",
+                              marginTop: "5px",
+                              display: "flex",
+                              alignItems: "center",
+                              gap: "4px",
+                            }}
+                          >
+                            <i
+                              className="fas fa-exclamation-circle"
+                              style={{ fontSize: "0.75rem" }}
+                            />
+                            {errors.phone}
+                          </div>
+                        )}
                       </div>
                     </div>
                     <div className="col-lg-12">
@@ -184,15 +360,17 @@ function Frequently() {
                           cols={30}
                           rows={10}
                           placeholder="Write comments"
-                          defaultValue={""}
+                          value={formData.message}
+                          onChange={(e) =>
+                            setFormData((prev) => ({
+                              ...prev,
+                              message: e.target.value,
+                            }))
+                          }
                         />
                       </div>
                       <div className="slider-btn">
-                        <button
-                          className="btn ss-btn"
-                          data-animation="fadeInRight"
-                          data-delay=".8s"
-                        >
+                        <button className="btn ss-btn" type="submit">
                           <span>Submit Now</span>{" "}
                           <i className="fal fa-long-arrow-right" />
                         </button>

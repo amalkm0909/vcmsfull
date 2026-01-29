@@ -14,6 +14,7 @@ import Redslider from "../menhome/Redslider";
 import Blog from "../menhome/Blog";
 import Subscribe from "../menhome/Subscribe";
 import Placements from "../menhome/Placements";
+import GoToTop from "../GoToTop/GoToTop";
 
 function Main() {
   return (
@@ -33,6 +34,7 @@ function Main() {
       <Redslider />
       <Blog />
       {/* <Subscribe/> */}
+      <GoToTop />
     </>
   );
 }
