@@ -388,20 +388,14 @@ function First() {
                   <h2 className="widget-title">Follow Us</h2>
                   <div className="textwidget custom-html-widget">
                     <div className="widget-social">
-                      <a href="#">
-                        <i className="fab fa-twitter" />
-                      </a>
-                      <a href="#">
-                        <i className="fab fa-pinterest-p" />
-                      </a>
-                      <a href="#">
+                      <a href="https://www.facebook.com/p/Viswam-College-of-Management-Studies-100091354450765">
                         <i className="fab fa-facebook-f" />
                       </a>
-                      <a href="#">
-                        <i className="fab fa-instagram" />
+                      <a href="https://www.youtube.com/@ViswamCollageOfMangementStudie">
+                        <i className="fab fa-youtube" />
                       </a>
-                      <a href="#">
-                        <i className="fab fa-wordpress" />
+                      <a href="https://www.instagram.com/vcms_cochin?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==">
+                        <i className="fab fa-instagram" />
                       </a>
                     </div>
                   </div>

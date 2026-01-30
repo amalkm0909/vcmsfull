@@ -198,10 +198,9 @@ function Testimonial() {
       <section
         className="testimonial-area pt-120 pb-120 p-relative fix"
         style={{
-          background:
-            "linear-gradient(135deg, #f5f5f5 0%, #e8f4ff 50%, #f5f5f5 100%)",
+          backgroundColor: "#ffffff",
           position: "relative",
-          padding: isMobile ? "30px 0" : isTablet ? "60px 0" : undefined,
+          padding: isMobile ? "20px 0" : isTablet ? "60px 0" : "150px 0",
           overflow: "hidden",
         }}
       >
@@ -209,12 +208,16 @@ function Testimonial() {
           <div className="row">
             <div
               className="col-lg-12"
-              style={{ marginBottom: isMobile ? "20px" : "70px" }}
+              style={{ marginBottom: isMobile ? "15px" : "70px" }}
             >
               <div
                 className="text-center wow fadeInDown animated"
                 data-animation="fadeInDown"
                 data-delay=".4s"
+                style={{
+                  textAlign: isMobile ? "left" : "center",
+                  paddingLeft: isMobile ? "10px" : "0",
+                }}
               >
                 <h5
                   style={{
@@ -367,9 +370,9 @@ function Testimonial() {
                       style={{
                         display: "flex",
                         alignItems: "center",
-                        justifyContent: "flex-start",
+                        justifyContent: "center",
                         gap: isMobile ? "3px" : "12px",
-                        paddingTop: isMobile ? "4px" : "10px",
+                        paddingTop: isMobile ? "12px" : "20px",
                         paddingBottom: isMobile ? "5px" : "8px",
                         borderTop: isMobile ? "none" : "1px solid #e5e5e5",
                         marginTop: "auto",
@@ -377,7 +380,7 @@ function Testimonial() {
                     >
                       <div
                         style={{
-                          textAlign: "left",
+                          textAlign: "center",
                           flex: 1,
                           minWidth: 0,
                           overflow: "hidden",

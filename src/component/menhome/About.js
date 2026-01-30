@@ -1,9 +1,25 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+const mobileStyles = `
+  @media (max-width: 768px) {
+    .about-content {
+      text-align: left !important;
+    }
+    .about-title {
+      text-align: left !important;
+    }
+    .s-about-content {
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+    }
+  }
+`;
+
 function About() {
   return (
     <>
+      <style>{mobileStyles}</style>
       <section
         className="about-area about-p pt-120 pb-30 p-relative fix"
         style={{ backgroundColor: "#ffffff" }}
@@ -44,7 +60,12 @@ function About() {
                 className="about-content s-about-content wow fadeInRight animated"
                 data-animation="fadeInRight"
                 data-delay=".4s"
-                style={{ paddingLeft: "50px" }}
+                style={{
+                  paddingLeft: "50px",
+                  "@media (max-width: 768px)": {
+                    paddingLeft: "0px",
+                  },
+                }}
               >
                 <div className="about-title second-title pb-25">
                   <h5

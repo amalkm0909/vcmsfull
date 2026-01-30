@@ -2,9 +2,63 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
+const mobileStyles = `
+  @media (max-width: 768px) {
+    .footer-top .row {
+      display: grid !important;
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 15px !important;
+    }
+    .footer-widget {
+      padding: 10px 8px !important;
+    }
+    .f-widget-title h2 {
+      font-size: 14px !important;
+    }
+    .f-contact p {
+      font-size: 12px !important;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .footer-top .row {
+      display: grid !important;
+      grid-template-columns: 1fr !important;
+      gap: 10px !important;
+    }
+    .col-sm-12 {
+      min-width: auto;
+      width: 100%;
+      max-width: 100%;
+    }
+    .footer-widget {
+      padding: 8px 5px !important;
+    }
+    .f-widget-title h2 {
+      font-size: 12px !important;
+      margin-bottom: 8px !important;
+    }
+    .f-contact p {
+      font-size: 11px !important;
+      margin-bottom: 8px !important;
+    }
+    .footer-link ul li {
+      margin-bottom: 5px !important;
+    }
+    .footer-link ul li a {
+      font-size: 10px !important;
+    }
+    .copyright-wrap > div {
+      flex-wrap: nowrap !important;
+      gap: 10px !important;
+    }
+  }
+`;
+
 function Main() {
   return (
     <>
+      <style>{mobileStyles}</style>
       <footer
         className="footer-bg footer-p pt-50"
         style={{
@@ -16,24 +70,15 @@ function Main() {
           <div className="container">
             <div
               className="row"
-              style={{ gap: "30px", display: "flex", flexWrap: "wrap" }}
+              style={{
+                gap: "30px",
+                display: "flex",
+                flexWrap: "wrap",
+                justifyContent: "flex-start",
+              }}
             >
               <div className="col-xl-3 col-lg-4 col-md-6 col-sm-12 mb-40">
                 <div className="footer-widget">
-                  <div className="f-logo mb-20">
-                    <Link to="/">
-                      <img
-                        src="/assets/img/logo/logo.jpeg"
-                        alt="VCMS Logo"
-                        style={{
-                          maxHeight: "100px",
-                          width: "auto",
-                          marginBottom: "20px",
-                          display: "block",
-                        }}
-                      />
-                    </Link>
-                  </div>
                   <div className="f-widget-title mb-20">
                     <h2
                       style={{
@@ -63,81 +108,106 @@ function Main() {
                     </p>
                   </div>
                   <div
-                    className="footer-social mt-20"
-                    style={{ display: "flex", gap: "10px" }}
+                    style={{
+                      display: "flex",
+                      gap: "20px",
+                      alignItems: "flex-start",
+                    }}
                   >
-                    <a
-                      href="https://www.facebook.com/p/Viswam-College-of-Management-Studies-100091354450765"
+                    <div className="f-logo" style={{ minWidth: "100px" }}>
+                      <Link to="/">
+                        <img
+                          src="/assets/img/logo/logo.png"
+                          alt="VCMS Logo"
+                          style={{
+                            maxHeight: "80px",
+                            width: "auto",
+                            display: "block",
+                          }}
+                        />
+                      </Link>
+                    </div>
+                    <div
+                      className="footer-social"
                       style={{
-                        width: "40px",
-                        height: "40px",
-                        borderRadius: "50%",
-                        backgroundColor: "#4899d2",
                         display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        color: "#fff",
-                        transition: "all 0.3s ease",
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.backgroundColor = "#ff6b35";
-                        e.currentTarget.style.transform = "scale(1.1)";
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.backgroundColor = "#4899d2";
-                        e.currentTarget.style.transform = "scale(1)";
+                        gap: "10px",
+                        paddingTop: "10px",
                       }}
                     >
-                      <i className="fab fa-facebook-f" />
-                    </a>
-                    <a
-                      href="https://www.instagram.com/vcms_cochin?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
-                      style={{
-                        width: "40px",
-                        height: "40px",
-                        borderRadius: "50%",
-                        backgroundColor: "#4899d2",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        color: "#fff",
-                        transition: "all 0.3s ease",
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.backgroundColor = "#ff6b35";
-                        e.currentTarget.style.transform = "scale(1.1)";
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.backgroundColor = "#4899d2";
-                        e.currentTarget.style.transform = "scale(1)";
-                      }}
-                    >
-                      <i className="fab fa-instagram" />
-                    </a>
-                    <a
-                      href="https://www.youtube.com/@ViswamCollageOfMangementStudie"
-                      style={{
-                        width: "40px",
-                        height: "40px",
-                        borderRadius: "50%",
-                        backgroundColor: "#4899d2",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        color: "#fff",
-                        transition: "all 0.3s ease",
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.backgroundColor = "#ff6b35";
-                        e.currentTarget.style.transform = "scale(1.1)";
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.backgroundColor = "#4899d2";
-                        e.currentTarget.style.transform = "scale(1)";
-                      }}
-                    >
-                      <i className="fab fa-youtube" />
-                    </a>
+                      <a
+                        href="https://www.facebook.com/p/Viswam-College-of-Management-Studies-100091354450765"
+                        style={{
+                          width: "40px",
+                          height: "40px",
+                          borderRadius: "50%",
+                          backgroundColor: "#4899d2",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          color: "#fff",
+                          transition: "all 0.3s ease",
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.backgroundColor = "#ff6b35";
+                          e.currentTarget.style.transform = "scale(1.1)";
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.backgroundColor = "#4899d2";
+                          e.currentTarget.style.transform = "scale(1)";
+                        }}
+                      >
+                        <i className="fab fa-facebook-f" />
+                      </a>
+                      <a
+                        href="https://www.instagram.com/vcms_cochin?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                        style={{
+                          width: "40px",
+                          height: "40px",
+                          borderRadius: "50%",
+                          backgroundColor: "#4899d2",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          color: "#fff",
+                          transition: "all 0.3s ease",
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.backgroundColor = "#ff6b35";
+                          e.currentTarget.style.transform = "scale(1.1)";
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.backgroundColor = "#4899d2";
+                          e.currentTarget.style.transform = "scale(1)";
+                        }}
+                      >
+                        <i className="fab fa-instagram" />
+                      </a>
+                      <a
+                        href="https://www.youtube.com/@ViswamCollageOfMangementStudie"
+                        style={{
+                          width: "40px",
+                          height: "40px",
+                          borderRadius: "50%",
+                          backgroundColor: "#4899d2",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          color: "#fff",
+                          transition: "all 0.3s ease",
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.backgroundColor = "#ff6b35";
+                          e.currentTarget.style.transform = "scale(1.1)";
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.backgroundColor = "#4899d2";
+                          e.currentTarget.style.transform = "scale(1)";
+                        }}
+                      >
+                        <i className="fab fa-youtube" />
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -479,7 +549,7 @@ function Main() {
           style={{
             background:
               "linear-gradient(90deg, #d4aaaa 0%, #f9fbfd 50%, #ffffff 100%)",
-            padding: "8px 0",
+            padding: window.innerWidth <= 768 ? "2px 0" : "8px 0",
             borderTop: "2px solid #4899d2",
             position: "relative",
             overflow: "hidden",
@@ -506,73 +576,98 @@ function Main() {
           >
             <div
               style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(auto-fit, minmax(130px, 1fr))",
-                gap: "10px",
+                display: "flex",
+                flexDirection: window.innerWidth <= 768 ? "column" : "row",
+                gap: window.innerWidth <= 768 ? "5px" : "350px",
                 alignItems: "center",
+                justifyContent: "center",
                 marginBottom: "0",
+                flexWrap: "wrap",
               }}
             >
-              {/* Logo Section */}
-              <div style={{ textAlign: "center" }}>
-                <Link
-                  to="/"
-                  style={{
-                    display: "inline-block",
-                    transition: "all 0.3s ease",
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = "scale(1.08)";
-                    e.currentTarget.style.filter =
-                      "drop-shadow(0 5px 15px rgba(72, 153, 210, 0.4))";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = "scale(1)";
-                    e.currentTarget.style.filter = "drop-shadow(none)";
-                  }}
-                >
-                  <img
-                    src="/assets/img/logo/vcms_logo.png"
-                    alt="VCMS Logo"
-                    style={{ height: "55px" }}
-                  />
-                </Link>
-              </div>
-
-              {/* Copyright Text */}
-              <div style={{ textAlign: "center" }}>
-                <div
-                  style={{
-                    color: "#0f3a5b",
-                    fontSize: "13px",
-                    fontWeight: "500",
-                    letterSpacing: "0.3px",
-                  }}
-                >
-                  © 2026{" "}
-                  <span
+              <div
+                style={{
+                  display: "flex",
+                  gap: window.innerWidth <= 576 ? "10px" : "350px",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  width: window.innerWidth <= 768 ? "100%" : "auto",
+                  flexWrap: "wrap",
+                }}
+              >
+                {/* Logo Section */}
+                <div style={{ textAlign: "center" }}>
+                  <Link
+                    to="/"
                     style={{
-                      color: "#4899d2",
-                      fontWeight: "700",
-                      fontSize: "14px",
+                      display: "inline-block",
+                      transition: "all 0.3s ease",
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.transform = "scale(1.08)";
+                      e.currentTarget.style.filter =
+                        "drop-shadow(0 5px 15px rgba(72, 153, 210, 0.4))";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = "scale(1)";
+                      e.currentTarget.style.filter = "drop-shadow(none)";
                     }}
                   >
-                    VCMS
-                  </span>{" "}
-                  Kerala
+                    <img
+                      src={
+                        window.innerWidth <= 576
+                          ? "/assets/img/logo/logo.png"
+                          : "/assets/img/logo/vcms_logo.png"
+                      }
+                      alt="VCMS Logo"
+                      style={{
+                        height: window.innerWidth <= 576 ? "40px" : "55px",
+                      }}
+                    />
+                  </Link>
                 </div>
+
+                {/* Copyright Text */}
                 <div
                   style={{
-                    color: "#0f3a5b",
-                    fontSize: "10px",
-                    marginTop: "1px",
+                    textAlign: "center",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "5px",
                   }}
                 >
-                  All rights reserved.
+                  <div
+                    style={{
+                      color: "#0f3a5b",
+                      fontSize: "13px",
+                      fontWeight: "500",
+                      letterSpacing: "0.3px",
+                    }}
+                  >
+                    © 2026{" "}
+                    <span
+                      style={{
+                        color: "#4899d2",
+                        fontWeight: "700",
+                        fontSize: "14px",
+                      }}
+                    >
+                      VCMS
+                    </span>{" "}
+                    Kerala
+                  </div>
+                  <div
+                    style={{
+                      color: "#0f3a5b",
+                      fontSize: "10px",
+                    }}
+                  >
+                    All rights reserved.
+                  </div>
                 </div>
               </div>
 
-              {/* Policy Links */}
+              {/* Policy Links - Below copyright */}
               <div
                 style={{
                   display: "flex",
