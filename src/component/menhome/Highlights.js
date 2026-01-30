@@ -45,14 +45,19 @@ function Highlights() {
                   <h2
                     className="counter-number"
                     style={{
-                      fontSize: "48px",
+                      fontSize: window.innerWidth <= 767 ? "28px" : "48px",
                       fontWeight: "bold",
                       marginBottom: "10px",
                     }}
                   >
                     {stat.number}
                   </h2>
-                  <h3 style={{ fontSize: "20px", marginBottom: "10px" }}>
+                  <h3
+                    style={{
+                      fontSize: window.innerWidth <= 767 ? "14px" : "20px",
+                      marginBottom: "10px",
+                    }}
+                  >
                     {stat.label}
                   </h3>
                   <p style={{ fontSize: "14px", opacity: "0.9" }}>

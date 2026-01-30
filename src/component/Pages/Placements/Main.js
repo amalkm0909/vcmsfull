@@ -13,7 +13,13 @@ function Main() {
           <div className="row">
             <div className="col-lg-12">
               <div className="section-title center-align mb-50 wow fadeInDown animated">
-                <h2>Placement Corner</h2>
+                <h2
+                  style={{
+                    fontSize: window.innerWidth <= 767 ? "18px" : "36px",
+                  }}
+                >
+                  Placement Corner
+                </h2>
               </div>
               <p className="text-center mb-30">
                 At VCMS, we are committed to ensuring 100% placement support for

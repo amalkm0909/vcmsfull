@@ -15,7 +15,13 @@ function Main() {
           <div className="row">
             <div className="col-lg-12">
               <div className="section-title center-align mb-50 wow fadeInDown animated">
-                <h2>News & Events</h2>
+                <h2
+                  style={{
+                    fontSize: window.innerWidth <= 767 ? "18px" : "36px",
+                  }}
+                >
+                  News & Events
+                </h2>
               </div>
               <p className="text-center mb-30">
                 Stay updated with the latest news, upcoming events, and

@@ -15,7 +15,13 @@ function Main() {
           <div className="row">
             <div className="col-lg-12">
               <div className="section-title center-align mb-50 wow fadeInDown animated">
-                <h2>Alumni Network</h2>
+                <h2
+                  style={{
+                    fontSize: window.innerWidth <= 767 ? "18px" : "36px",
+                  }}
+                >
+                  Alumni Network
+                </h2>
               </div>
               <p className="text-center mb-30">
                 Our alumni are our greatest asset. VCMS graduates work across

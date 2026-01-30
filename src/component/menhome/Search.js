@@ -113,7 +113,13 @@ function Search() {
             <div className="col-lg-8">
               <div className="contact-bg">
                 <div className="section-title">
-                  <h2>Search For Courses</h2>
+                  <h2
+                    style={{
+                      fontSize: window.innerWidth <= 767 ? "18px" : "36px",
+                    }}
+                  >
+                    Search For Courses
+                  </h2>
                   <p>
                     Our community is being called to reimagine the future. As
                     the only university where a renowned design school comes

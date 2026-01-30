@@ -40,7 +40,7 @@ function Event() {
                 </h5>
                 <h2
                   style={{
-                    fontSize: "42px",
+                    fontSize: window.innerWidth <= 767 ? "18px" : "42px",
                     fontWeight: "800",
                     color: "#0f3a5b",
                     marginBottom: "20px",

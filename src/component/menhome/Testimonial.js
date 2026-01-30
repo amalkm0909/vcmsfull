@@ -1,7 +1,21 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
 
 function Testimonial() {
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 767);
+  const [isTablet, setIsTablet] = useState(
+    window.innerWidth > 767 && window.innerWidth <= 1024,
+  );
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 767);
+      setIsTablet(window.innerWidth > 767 && window.innerWidth <= 1024);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
   const testimonials = [
     {
       id: 1,
@@ -97,17 +111,106 @@ function Testimonial() {
 
   return (
     <>
+      <style>
+        {`
+          .testimonial-active .slick-slide {
+            height: auto;
+          }
+          .testimonial-active .slick-track {
+            display: flex;
+            align-items: stretch;
+          }
+          .testimonial-active .slick-slide > div {
+            height: 100%;
+          }
+          .single-testimonial {
+            height: 100%;
+          }
+          @media (min-width: 768px) {
+            .single-testimonial {
+              height: 380px !important;
+              min-height: 380px !important;
+              max-height: 380px !important;
+            }
+          }
+          @media (min-width: 768px) and (max-width: 1024px) {
+            .single-testimonial {
+              height: 340px !important;
+              min-height: 340px !important;
+              max-height: 340px !important;
+            }
+          }
+          @media (max-width: 767px) {
+            .testimonial-area {
+              padding: 30px 0 !important;
+            }
+            .testimonial-area .container {
+              padding-left: 8px !important;
+              padding-right: 8px !important;
+            }
+            .testimonial-active .slick-slide {
+              padding: 0 2px !important;
+            }
+            .testimonial-active .slick-list {
+              margin: 0 -2px !important;
+            }
+            .single-testimonial {
+              margin: 3px !important;
+              padding: 6px !important;
+              height: 130px !important;
+              min-height: 130px !important;
+              max-height: 130px !important;
+            }
+            .testimonial-quote {
+              font-size: 7px !important;
+              line-height: 1.2 !important;
+              min-height: auto !important;
+              margin-bottom: 0 !important;
+            }
+            .testimonial-active .slick-dots {
+              bottom: -20px !important;
+            }
+            .testimonial-active .slick-dots li button:before {
+              font-size: 5px !important;
+            }
+            .testimonial-active .slick-dots li {
+              margin: 0 1px !important;
+            }
+          }
+          @media (max-width: 480px) {
+            .testimonial-area {
+              padding: 25px 0 !important;
+            }
+            .single-testimonial {
+              margin: 2px !important;
+              padding: 5px !important;
+              height: 120px !important;
+              min-height: 120px !important;
+              max-height: 120px !important;
+            }
+            .testimonial-quote {
+              font-size: 6px !important;
+              line-height: 1.15 !important;
+            }
+          }
+        `}
+      </style>
       <section
         className="testimonial-area pt-120 pb-120 p-relative fix"
         style={{
           background:
             "linear-gradient(135deg, #f5f5f5 0%, #e8f4ff 50%, #f5f5f5 100%)",
           position: "relative",
+          padding: isMobile ? "30px 0" : isTablet ? "60px 0" : undefined,
+          overflow: "hidden",
         }}
       >
         <div className="container">
           <div className="row">
-            <div className="col-lg-12 mb-70">
+            <div
+              className="col-lg-12"
+              style={{ marginBottom: isMobile ? "20px" : "70px" }}
+            >
               <div
                 className="text-center wow fadeInDown animated"
                 data-animation="fadeInDown"
@@ -116,42 +219,48 @@ function Testimonial() {
                 <h5
                   style={{
                     color: "#4899d2",
-                    fontSize: "16px",
+                    fontSize: isMobile ? "9px" : "16px",
                     fontWeight: "700",
-                    marginBottom: "15px",
+                    marginBottom: isMobile ? "3px" : "15px",
                     textTransform: "uppercase",
                     letterSpacing: "1px",
                   }}
                 >
-                  <i className="fas fa-star" style={{ marginRight: "8px" }} />{" "}
+                  <i className="fas fa-star" style={{ marginRight: "5px" }} />{" "}
                   Alumni Success Stories
                 </h5>
 
                 <h2
                   style={{
-                    fontSize: "42px",
+                    fontSize: isMobile ? "16px" : isTablet ? "32px" : "42px",
                     fontWeight: "800",
                     color: "#0f3a5b",
-                    marginBottom: "20px",
+                    marginBottom: isMobile ? "5px" : "20px",
+                    lineHeight: isMobile ? "1.1" : "1.2",
+                    padding: isMobile ? "0 10px" : "0",
+                    wordBreak: "break-word",
                   }}
                 >
                   What Our Alumni Say
                 </h2>
                 <div
                   style={{
-                    width: "60px",
-                    height: "4px",
+                    width: isMobile ? "30px" : "60px",
+                    height: isMobile ? "2px" : "4px",
                     backgroundColor: "#ff6b35",
-                    margin: "0 auto 25px",
+                    margin: isMobile ? "0 auto 8px" : "0 auto 25px",
                     borderRadius: "2px",
                   }}
                 ></div>
                 <p
                   style={{
-                    fontSize: "16px",
+                    fontSize: isMobile ? "9px" : "16px",
                     color: "#666",
                     maxWidth: "700px",
                     margin: "0 auto",
+                    padding: isMobile ? "0 8px" : "0",
+                    display: isMobile ? "none" : "block",
+                    overflow: "hidden",
                   }}
                 >
                   Hear from our successful graduates who are making an impact in
@@ -171,44 +280,57 @@ function Testimonial() {
                     key={testimonial.id}
                     className="single-testimonial"
                     style={{
-                      padding: "30px",
+                      padding: isMobile ? "8px" : "30px",
                       backgroundColor:
                         "linear-gradient(135deg, #ffffff 0%, #f9fafb 100%)",
                       background:
                         "linear-gradient(135deg, #ffffff 0%, #f9fafb 100%)",
-                      borderRadius: "12px",
+                      borderRadius: isMobile ? "0px" : "12px",
                       boxShadow: "0 4px 15px rgba(0,0,0,0.06)",
                       transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
-                      border: "1px solid #efefef",
-                      margin: "15px",
+                      border: "none",
+                      margin: isMobile ? "3px" : "15px",
                       cursor: "pointer",
                       position: "relative",
                       display: "flex",
                       flexDirection: "column",
                       justifyContent: "space-between",
-                      minHeight: "380px",
+                      height: isMobile ? "130px" : isTablet ? "340px" : "380px",
+                      overflow: "hidden",
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.boxShadow =
-                        "0 20px 60px rgba(72, 153, 210, 0.2)";
-                      e.currentTarget.style.transform =
-                        "scale(1.05) rotateY(0deg)";
-                      e.currentTarget.style.borderColor = "#4899d2";
+                      if (!isMobile) {
+                        e.currentTarget.style.boxShadow =
+                          "0 20px 60px rgba(72, 153, 210, 0.2)";
+                        e.currentTarget.style.transform =
+                          "scale(1.05) rotateY(0deg)";
+                        e.currentTarget.style.borderColor = "#4899d2";
+                      }
                     }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.style.boxShadow =
-                        "0 4px 15px rgba(0,0,0,0.06)";
-                      e.currentTarget.style.transform = "scale(1)";
-                      e.currentTarget.style.borderColor = "#efefef";
+                      if (!isMobile) {
+                        e.currentTarget.style.boxShadow =
+                          "0 4px 15px rgba(0,0,0,0.06)";
+                        e.currentTarget.style.transform = "scale(1)";
+                        e.currentTarget.style.borderColor = "#efefef";
+                      }
                     }}
                   >
-                    <div style={{ flex: 1 }}>
+                    <div
+                      style={{
+                        flex: 1,
+                        overflow: "hidden",
+                        display: "flex",
+                        flexDirection: "column",
+                      }}
+                    >
                       <div
                         style={{
-                          display: "flex",
-                          gap: "5px",
-                          marginBottom: "20px",
+                          display: isMobile ? "none" : "flex",
+                          gap: isMobile ? "2px" : "5px",
+                          marginBottom: isMobile ? "2px" : "20px",
                           justifyContent: "center",
+                          flexShrink: 0,
                         }}
                       >
                         {[...Array(5)].map((_, i) => (
@@ -217,7 +339,7 @@ function Testimonial() {
                             className="fas fa-star"
                             style={{
                               color: "#ff6b35",
-                              fontSize: "14px",
+                              fontSize: isMobile ? "5px" : "14px",
                             }}
                           ></i>
                         ))}
@@ -225,12 +347,17 @@ function Testimonial() {
                       <p
                         className="testimonial-quote"
                         style={{
-                          fontSize: "16px",
-                          lineHeight: "1.8",
+                          fontSize: isMobile ? "6px" : "16px",
+                          lineHeight: isMobile ? "1.25" : "1.8",
                           color: "#555",
-                          marginBottom: "25px",
+                          marginBottom: isMobile ? "8px" : "8px",
                           fontWeight: "500",
-                          minHeight: "100px",
+                          flex: 1,
+                          maxHeight: isMobile ? "75px" : "none",
+                          overflow: "hidden",
+                          display: "-webkit-box",
+                          WebkitLineClamp: isMobile ? 5 : 4,
+                          WebkitBoxOrient: "vertical",
                         }}
                       >
                         "{testimonial.quote}"
@@ -240,41 +367,47 @@ function Testimonial() {
                       style={{
                         display: "flex",
                         alignItems: "center",
-                        gap: "15px",
-                        paddingTop: "20px",
-                        borderTop: "1px solid #e5e5e5",
+                        justifyContent: "flex-start",
+                        gap: isMobile ? "3px" : "12px",
+                        paddingTop: isMobile ? "4px" : "10px",
+                        paddingBottom: isMobile ? "5px" : "8px",
+                        borderTop: isMobile ? "none" : "1px solid #e5e5e5",
+                        marginTop: "auto",
                       }}
                     >
-                      <div className="testi-author">
-                        <img
-                          src={testimonial.image}
-                          alt={testimonial.name}
-                          style={{
-                            width: "60px",
-                            height: "60px",
-                            borderRadius: "50%",
-                            border: "3px solid #4899d2",
-                            objectFit: "cover",
-                          }}
-                        />
-                      </div>
-                      <div className="ta-info" style={{ textAlign: "left" }}>
+                      <div
+                        style={{
+                          textAlign: "left",
+                          flex: 1,
+                          minWidth: 0,
+                          overflow: "hidden",
+                        }}
+                      >
                         <h6
                           style={{
-                            fontSize: "15px",
+                            fontSize: isMobile ? "5px" : "15px",
                             fontWeight: "700",
                             color: "#0f3a5b",
-                            marginBottom: "3px",
-                            margin: "0 0 3px 0",
+                            margin: "0",
+                            padding: "0",
+                            lineHeight: isMobile ? "1" : "1.3",
+                            whiteSpace: "nowrap",
+                            overflow: "hidden",
+                            textOverflow: "ellipsis",
                           }}
                         >
                           {testimonial.name}
                         </h6>
                         <span
                           style={{
-                            fontSize: "12px",
+                            fontSize: isMobile ? "4px" : "12px",
                             color: "#4899d2",
                             fontWeight: "600",
+                            display: "block",
+                            lineHeight: "1",
+                            whiteSpace: "nowrap",
+                            overflow: "hidden",
+                            textOverflow: "ellipsis",
                           }}
                         >
                           {testimonial.role}

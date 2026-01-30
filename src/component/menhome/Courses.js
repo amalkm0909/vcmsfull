@@ -74,7 +74,6 @@ function Courses() {
   return (
     <>
       <section className="courses pt-120 pb-120 p-relative fix">
-        
         <div className="container">
           <div className="row">
             <div className="col-lg-12 p-relative">
@@ -86,7 +85,13 @@ function Courses() {
                 <h5>
                   <i className="fal fa-graduation-cap" /> Explore Our Courses
                 </h5>
-                <h2>Professional Programs & Certifications</h2>
+                <h2
+                  style={{
+                    fontSize: window.innerWidth <= 767 ? "18px" : "36px",
+                  }}
+                >
+                  Professional Programs & Certifications
+                </h2>
               </div>
             </div>
           </div>

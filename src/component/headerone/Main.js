@@ -15,12 +15,13 @@ function Main() {
 
   const getMobileMenuItemStyle = () => ({
     display: "block",
-    padding: windowWidth <= 576 ? "12px 0" : "15px 0",
-    fontSize: windowWidth <= 576 ? "13px" : "14px",
-    fontWeight: "400",
+    padding: windowWidth <= 576 ? "8px 8px" : "10px 10px",
+    fontSize: windowWidth <= 576 ? "10px" : "11px",
+    fontWeight: "500",
     color: "#333",
     textDecoration: "none",
     transition: "all 0.3s ease",
+    borderRadius: "6px",
   });
 
   useEffect(() => {
@@ -134,7 +135,7 @@ function Main() {
                 style={{
                   display: "flex",
                   alignItems: "center",
-                  gap: windowWidth <= 768 ? "15px" : "30px",
+                  gap: windowWidth <= 768 ? "10px" : "15px",
                   width: "100%",
                   flexWrap: "nowrap",
                   justifyContent: "space-between",
@@ -152,11 +153,7 @@ function Main() {
                   >
                     <Link to="/">
                       <img
-                        src={
-                          windowWidth <= 768
-                            ? "/assets/img/logo/logo.webp"
-                            : "/assets/img/logo/vcms_logo.png"
-                        }
+                        src="/assets/img/logo/vcms_logo.png"
                         alt="VCMS Logo"
                         style={{
                           maxHeight:
@@ -400,29 +397,31 @@ function Main() {
                     style={{
                       display: "flex",
                       justifyContent:
-                        windowWidth <= 768 ? "center" : "flex-end",
+                        windowWidth <= 768 ? "flex-end" : "flex-end",
                       alignItems: "center",
                       position: "relative",
                       zIndex: 100,
-                      width: windowWidth <= 768 ? "100%" : "auto",
-                      marginTop: windowWidth <= 768 ? "15px" : 0,
-                      padding: windowWidth <= 768 ? "0 10px" : 0,
+                      width: windowWidth <= 768 ? "auto" : "auto",
+                      marginTop: 0,
+                      padding: 0,
+                      gap: windowWidth <= 768 ? "8px" : "15px",
+                      flexShrink: 0,
                     }}
                   >
                     <ul
                       style={{
                         display: "flex",
                         justifyContent:
-                          windowWidth <= 768 ? "center" : "flex-end",
+                          windowWidth <= 768 ? "flex-end" : "flex-end",
                         alignItems: "center",
                         marginBottom: 0,
-                        gap: "10px",
-                        width: windowWidth <= 768 ? "100%" : "auto",
+                        gap: windowWidth <= 768 ? "6px" : "10px",
+                        width: "auto",
                       }}
                     >
                       <li
                         style={{
-                          width: windowWidth <= 768 ? "100%" : "auto",
+                          width: "auto",
                         }}
                       >
                         <div className="second-header-btn">
@@ -435,24 +434,24 @@ function Main() {
                               borderRadius: "25px",
                               padding:
                                 windowWidth <= 480
-                                  ? "11px 14px"
+                                  ? "8px 10px"
                                   : windowWidth <= 576
-                                    ? "12px 16px"
+                                    ? "10px 12px"
                                     : windowWidth <= 768
-                                      ? "13px 22px"
+                                      ? "11px 16px"
                                       : "12px 26px",
                               fontSize:
                                 windowWidth <= 480
-                                  ? "11px"
+                                  ? "10px"
                                   : windowWidth <= 576
-                                    ? "12px"
+                                    ? "11px"
                                     : windowWidth <= 768
-                                      ? "12.5px"
+                                      ? "12px"
                                       : "13px",
                               fontWeight: "400",
                               display: "block",
                               textAlign: "center",
-                              width: windowWidth <= 1024 ? "100%" : "auto",
+                              width: "auto",
                               whiteSpace: "nowrap",
                             }}
                           >
@@ -469,13 +468,14 @@ function Main() {
                         background: "none",
                         border: "none",
                         cursor: "pointer",
-                        fontSize: windowWidth <= 768 ? "16px" : "20px",
-                        padding: "6px 8px",
+                        fontSize: windowWidth <= 576 ? "14px" : "18px",
+                        padding: windowWidth <= 576 ? "6px 6px" : "8px 8px",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
                         color: "#333",
                         transition: "all 0.3s ease",
+                        flexShrink: 0,
                       }}
                       onMouseEnter={(e) => {
                         e.currentTarget.style.color = "#4899d2";
@@ -497,13 +497,23 @@ function Main() {
             {windowWidth <= 1024 && mobileMenuOpen && (
               <div
                 style={{
-                  position: "relative",
-                  backgroundColor: "#fff",
-                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+                  position: "absolute",
+                  right: 0,
+                  top: "100%",
+                  backgroundColor: "#f8f9fa",
+                  background:
+                    "linear-gradient(135deg, #ffffff 0%, #f0f7ff 100%)",
+                  boxShadow:
+                    "-8px 8px 24px rgba(72, 153, 210, 0.15), -4px 4px 12px rgba(0, 0, 0, 0.08)",
                   zIndex: 999,
-                  padding: windowWidth <= 576 ? "15px 10px" : "20px",
+                  padding: windowWidth <= 576 ? "10px 8px" : "14px",
                   maxHeight: `calc(100vh - ${windowWidth <= 576 ? 60 : 70}px)`,
                   overflowY: "auto",
+                  maxWidth: "fit-content",
+                  minWidth: windowWidth <= 576 ? "160px" : "190px",
+                  borderRadius: "8px",
+                  marginTop: "4px",
+                  border: "1px solid rgba(72, 153, 210, 0.1)",
                 }}
               >
                 <nav id="mobile-menu-dropdown">
@@ -514,21 +524,25 @@ function Main() {
                       padding: 0,
                       display: "flex",
                       flexDirection: "column",
-                      gap: "0",
+                      gap: "2px",
                     }}
                   >
-                    <li style={{ borderBottom: "1px solid #e0e0e0" }}>
+                    <li style={{ borderBottom: "none" }}>
                       <Link
                         to="/"
                         onClick={() => setMobileMenuOpen(false)}
                         style={getMobileMenuItemStyle()}
                         onMouseEnter={(e) => {
-                          e.currentTarget.style.color = "#4899d2";
-                          e.currentTarget.style.paddingLeft = "10px";
+                          e.currentTarget.style.color = "#fff";
+                          e.currentTarget.style.backgroundColor = "#4899d2";
+                          e.currentTarget.style.paddingLeft = "12px";
+                          e.currentTarget.style.borderRadius = "6px";
                         }}
                         onMouseLeave={(e) => {
                           e.currentTarget.style.color = "#333";
+                          e.currentTarget.style.backgroundColor = "transparent";
                           e.currentTarget.style.paddingLeft = "0";
+                          e.currentTarget.style.borderRadius = "0";
                         }}
                       >
                         Home
@@ -540,8 +554,8 @@ function Main() {
                         onClick={() => setMobileMenuOpen(false)}
                         style={{
                           display: "block",
-                          padding: "15px 0",
-                          fontSize: "16px",
+                          padding: windowWidth <= 576 ? "6px 0" : "8px 0",
+                          fontSize: windowWidth <= 576 ? "10px" : "11px",
                           fontWeight: "400",
                           color: "#333",
                           textDecoration: "none",
@@ -565,8 +579,8 @@ function Main() {
                         onClick={() => setMobileMenuOpen(false)}
                         style={{
                           display: "block",
-                          padding: "15px 0",
-                          fontSize: "16px",
+                          padding: windowWidth <= 576 ? "6px 0" : "8px 0",
+                          fontSize: windowWidth <= 576 ? "10px" : "11px",
                           fontWeight: "400",
                           color: "#333",
                           textDecoration: "none",
@@ -590,8 +604,8 @@ function Main() {
                         onClick={() => setMobileMenuOpen(false)}
                         style={{
                           display: "block",
-                          padding: "15px 0",
-                          fontSize: "16px",
+                          padding: windowWidth <= 576 ? "6px 0" : "8px 0",
+                          fontSize: windowWidth <= 576 ? "10px" : "11px",
                           fontWeight: "400",
                           color: "#333",
                           textDecoration: "none",
@@ -615,8 +629,8 @@ function Main() {
                         onClick={() => setMobileMenuOpen(false)}
                         style={{
                           display: "block",
-                          padding: "15px 0",
-                          fontSize: "16px",
+                          padding: windowWidth <= 576 ? "6px 0" : "8px 0",
+                          fontSize: windowWidth <= 576 ? "10px" : "11px",
                           fontWeight: "400",
                           color: "#333",
                           textDecoration: "none",
@@ -640,8 +654,8 @@ function Main() {
                         onClick={() => setMobileMenuOpen(false)}
                         style={{
                           display: "block",
-                          padding: "15px 0",
-                          fontSize: "16px",
+                          padding: windowWidth <= 576 ? "6px 0" : "8px 0",
+                          fontSize: windowWidth <= 576 ? "10px" : "11px",
                           fontWeight: "400",
                           color: "#333",
                           textDecoration: "none",
@@ -665,8 +679,8 @@ function Main() {
                         onClick={() => setMobileMenuOpen(false)}
                         style={{
                           display: "block",
-                          padding: "15px 0",
-                          fontSize: "16px",
+                          padding: windowWidth <= 576 ? "6px 0" : "8px 0",
+                          fontSize: windowWidth <= 576 ? "10px" : "11px",
                           fontWeight: "400",
                           color: "#333",
                           textDecoration: "none",
@@ -690,8 +704,8 @@ function Main() {
                         onClick={() => setMobileMenuOpen(false)}
                         style={{
                           display: "block",
-                          padding: "15px 0",
-                          fontSize: "16px",
+                          padding: windowWidth <= 576 ? "6px 0" : "8px 0",
+                          fontSize: windowWidth <= 576 ? "10px" : "11px",
                           fontWeight: "400",
                           color: "#333",
                           textDecoration: "none",
@@ -715,8 +729,8 @@ function Main() {
                         onClick={() => setMobileMenuOpen(false)}
                         style={{
                           display: "block",
-                          padding: "15px 0",
-                          fontSize: "16px",
+                          padding: windowWidth <= 576 ? "6px 0" : "8px 0",
+                          fontSize: windowWidth <= 576 ? "10px" : "11px",
                           fontWeight: "400",
                           color: "#333",
                           textDecoration: "none",
@@ -740,8 +754,8 @@ function Main() {
                         onClick={() => setMobileMenuOpen(false)}
                         style={{
                           display: "block",
-                          padding: "15px 0",
-                          fontSize: "16px",
+                          padding: windowWidth <= 576 ? "6px 0" : "8px 0",
+                          fontSize: windowWidth <= 576 ? "10px" : "11px",
                           fontWeight: "400",
                           color: "#333",
                           textDecoration: "none",

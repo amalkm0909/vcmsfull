@@ -58,20 +58,27 @@ function Main({ subtitle, title, bannerImg, description }) {
                         borderRadius: "24px",
                         border: "1px solid rgba(255, 255, 255, 0.2)",
                         boxShadow: "0 8px 32px rgba(31, 38, 135, 0.15)",
-                        padding: "32px 40px 24px 40px",
-                        maxWidth: 480,
-                        margin: "40px 0 0 auto",
+                        padding:
+                          window.innerWidth <= 767
+                            ? "20px 25px 16px 25px"
+                            : "32px 40px 24px 40px",
+                        maxWidth: window.innerWidth <= 767 ? "90%" : "480px",
+                        margin:
+                          window.innerWidth <= 767
+                            ? "20px auto 0"
+                            : "40px 0 0 auto",
                         position: "relative",
                         zIndex: 2,
                         textAlign: "center",
-                        right: "5vw",
+                        right: window.innerWidth <= 767 ? "0" : "5vw",
                       }}
                     >
                       <span
                         style={{
-                          fontSize: 40,
+                          fontSize: window.innerWidth <= 767 ? "28px" : "40px",
                           color: "#ff6b35",
-                          marginBottom: 10,
+                          marginBottom:
+                            window.innerWidth <= 767 ? "6px" : "10px",
                           display: "inline-block",
                           fontWeight: 700,
                           textShadow:
@@ -86,8 +93,8 @@ function Main({ subtitle, title, bannerImg, description }) {
                       </span>
                       <p
                         style={{
-                          marginTop: "10px",
-                          fontSize: "18px",
+                          marginTop: window.innerWidth <= 767 ? "6px" : "10px",
+                          fontSize: window.innerWidth <= 767 ? "12px" : "18px",
                           color: "#fff",
                           fontWeight: 600,
                           letterSpacing: 1,
@@ -110,9 +117,15 @@ function Main({ subtitle, title, bannerImg, description }) {
                         borderRadius: "18px",
                         border: "1px solid rgba(255, 255, 255, 0.2)",
                         boxShadow: "0 8px 32px rgba(31, 38, 135, 0.15)",
-                        padding: "32px 36px 24px 36px",
-                        maxWidth: 520,
-                        margin: "40px 40px 0 auto",
+                        padding:
+                          window.innerWidth <= 767
+                            ? "20px 20px 16px 20px"
+                            : "32px 36px 24px 36px",
+                        maxWidth: window.innerWidth <= 767 ? "90%" : "520px",
+                        margin:
+                          window.innerWidth <= 767
+                            ? "20px auto 0"
+                            : "40px 40px 0 auto",
                         position: "relative",
                         zIndex: 2,
                         textAlign: "left",
@@ -120,10 +133,11 @@ function Main({ subtitle, title, bannerImg, description }) {
                     >
                       <h2
                         style={{
-                          fontSize: 38,
+                          fontSize: window.innerWidth <= 767 ? "22px" : "38px",
                           fontWeight: 800,
                           color: "#fff",
-                          marginBottom: 12,
+                          marginBottom:
+                            window.innerWidth <= 767 ? "8px" : "12px",
                           letterSpacing: 1,
                           textShadow:
                             "0 2px 4px rgba(0, 0, 0, 0.4), 0 4px 8px rgba(0, 0, 0, 0.3), 0 0px 20px rgba(0, 0, 0, 0.2)",
@@ -133,7 +147,7 @@ function Main({ subtitle, title, bannerImg, description }) {
                       </h2>
                       <p
                         style={{
-                          fontSize: 18,
+                          fontSize: window.innerWidth <= 767 ? "12px" : "18px",
                           color: "#fff",
                           fontWeight: 600,
                           marginBottom: 0,
